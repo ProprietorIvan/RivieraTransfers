@@ -1,12 +1,13 @@
 import React from "react";
 import {
-  Anchor,
+  Car,
   Phone,
   Mail,
   ArrowRight,
-  Compass,
+  MapPin,
   Shield,
   Star,
+  Calendar,
 } from "lucide-react";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -27,70 +28,72 @@ const Home = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Riviera Yachts",
+    name: "Monaco Express",
     description:
-      "Luxury yacht charter services in Monaco and the French Riviera",
-    url: "https://rivierayachts.com",
-    logo: "https://rivierayachts.com/logo.png",
+      "Premium car transfer services in Monaco, Nice, and the French Riviera",
+    url: "https://monaco-express.com",
+    logo: "https://monaco-express.com/logo.png",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Monaco",
       addressCountry: "MC",
     },
     sameAs: [
-      "https://www.facebook.com/rivierayachts",
-      "https://www.instagram.com/rivierayachts",
-      "https://twitter.com/rivierayachts",
+      "https://www.facebook.com/monacoexpress",
+      "https://www.instagram.com/monacoexpress",
+      "https://twitter.com/monacoexpress",
     ],
     offers: {
       "@type": "Offer",
-      description: "Luxury yacht charters in the Mediterranean",
-      areaServed: "Mediterranean Sea",
+      description: "Luxury car transfers in the French Riviera",
+      areaServed: "French Riviera",
     },
   };
 
   return (
     <>
       <Head>
-        <title>Luxury Yacht Charters in Monaco | Riviera Yachts</title>
+        <title>
+          Luxury Car Transfers in Monaco & French Riviera | Monaco Express
+        </title>
         <meta
           name="description"
-          content="Experience the ultimate in luxury yacht charters with Riviera Yachts. Discover the Mediterranean's most exclusive destinations aboard our prestigious fleet."
+          content="Experience premium car transfers in Monaco, Nice, and the French Riviera. Professional service for airport transfers, Grand Prix events, and luxury travel."
         />
         <meta
           name="keywords"
-          content="luxury yacht charter, Monaco yacht rental, Mediterranean yacht charter, private yacht hire, luxury boat rental"
+          content="Monaco car transfer, Nice airport transfer, French Riviera transfers, Grand Prix transfers, luxury car service Monaco"
         />
 
         {/* Open Graph tags */}
         <meta
           property="og:title"
-          content="Luxury Yacht Charters in Monaco | Riviera Yachts"
+          content="Luxury Car Transfers in Monaco & French Riviera | Monaco Express"
         />
         <meta
           property="og:description"
-          content="Experience the ultimate in luxury yacht charters with Riviera Yachts. Discover the Mediterranean's most exclusive destinations."
+          content="Experience premium car transfers in Monaco, Nice, and the French Riviera. Professional service for airport transfers and luxury travel."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://rivierayachts.com" />
+        <meta property="og:url" content="https://monaco-express.com" />
         <meta
           property="og:image"
-          content="https://rivierayachts.com/og-image.jpg"
+          content="https://monaco-express.com/og-image.jpg"
         />
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Luxury Yacht Charters in Monaco | Riviera Yachts"
+          content="Luxury Car Transfers in Monaco & French Riviera | Monaco Express"
         />
         <meta
           name="twitter:description"
-          content="Experience the ultimate in luxury yacht charters with Riviera Yachts."
+          content="Experience premium car transfers in Monaco, Nice, and the French Riviera."
         />
         <meta
           name="twitter:image"
-          content="https://rivierayachts.com/twitter-image.jpg"
+          content="https://monaco-express.com/twitter-image.jpg"
         />
 
         {/* Additional meta tags */}
@@ -98,8 +101,8 @@ const Home = () => {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
-        <meta name="theme-color" content="#95c4ef" />
-        <link rel="canonical" href="https://rivierayachts.com" />
+        <meta name="theme-color" content="#1a365d" />
+        <link rel="canonical" href="https://monaco-express.com" />
 
         {/* Structured data */}
         <script
@@ -119,11 +122,11 @@ const Home = () => {
               playsInline
               className="absolute min-w-full min-h-full object-cover filter brightness-110 contrast-110"
             >
-              <source src="/photos/homepage/background.mp4" type="video/mp4" />
+              <source src="/videos/background.mp4" type="video/mp4" />
             </video>
             {/* Gradient overlay for better text visibility */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
           </div>
 
           <Navigation transparent={true} />
@@ -131,30 +134,30 @@ const Home = () => {
           <div className="relative h-full max-w-7xl mx-auto px-4 flex items-center justify-end">
             <div className="max-w-2xl text-white text-right sm:pr-6">
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif mb-4 sm:mb-6 drop-shadow-lg">
-                Experience the Ultimate in Luxury Yacht Charters
+                Premium Car Transfers in the French Riviera
               </h1>
               <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-white/90 drop-shadow">
-                Discover the Mediterranean&apos;s most exclusive destinations
-                aboard our prestigious fleet of luxury yachts.
+                Experience luxury transfers between Monaco, Nice Airport, and
+                the most exclusive destinations in the French Riviera.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-end">
                 <button
-                  onClick={() => handleNavigation("/fleet")}
-                  className="group flex items-center justify-center gap-2 bg-white/90 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium hover:bg-white transition-colors backdrop-blur-sm"
-                  aria-label="Explore our yacht fleet"
+                  onClick={() => handleNavigation("/services")}
+                  className="group flex items-center justify-center gap-2 bg-black/90 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium hover:bg-gray-800 transition-colors backdrop-blur-sm"
+                  aria-label="Explore our transfer services"
                 >
-                  <Anchor className="w-4 h-4" />
-                  <span>Explore Our Fleet</span>
+                  <Car className="w-4 h-4" />
+                  <span>Our Services</span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <button
                   onClick={() => handleNavigation("/contact")}
                   className="group flex items-center justify-center gap-2 bg-transparent border-2 border-white/80 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium hover:bg-white/10 transition-colors backdrop-blur-sm"
-                  aria-label="Contact us about yacht charters"
+                  aria-label="Contact us about transfers"
                 >
                   <Mail className="w-4 h-4" />
-                  <span>Contact Us</span>
+                  <span>Book Now</span>
                 </button>
               </div>
             </div>
@@ -167,25 +170,26 @@ const Home = () => {
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12">
               <div className="text-center group">
                 <div className="mb-4 inline-flex p-4 bg-black/5 rounded-full transition-all duration-300 group-hover:bg-black/10">
-                  <Compass className="w-8 h-8 text-black" />
+                  <MapPin className="w-8 h-8 text-black" />
                 </div>
                 <h3 className="text-xl font-serif mb-2 text-black">
-                  Exclusive Destinations
+                  Strategic Locations
                 </h3>
                 <p className="text-slate-600">
-                  Experience the finest ports and hidden gems of the
-                  Mediterranean.
+                  Convenient transfers between Monaco, Nice Airport, and all
+                  major Riviera destinations.
                 </p>
               </div>
               <div className="text-center group">
                 <div className="mb-4 inline-flex p-4 bg-black/5 rounded-full transition-all duration-300 group-hover:bg-black/10">
-                  <Shield className="w-8 h-8 text-black" />
+                  <Calendar className="w-8 h-8 text-black" />
                 </div>
                 <h3 className="text-xl font-serif mb-2 text-black">
-                  Professional Crew
+                  Special Events
                 </h3>
                 <p className="text-slate-600">
-                  Expert captains and attentive staff at your service.
+                  Dedicated services for Monaco Grand Prix, Rolex Monte-Carlo
+                  Masters, and other prestigious events.
                 </p>
               </div>
               <div className="text-center group sm:col-span-2 md:col-span-1">
@@ -196,7 +200,8 @@ const Home = () => {
                   Luxury Experience
                 </h3>
                 <p className="text-slate-600">
-                  Unparalleled comfort and service on every journey.
+                  Premium vehicles and professional chauffeurs for the ultimate
+                  comfort.
                 </p>
               </div>
             </div>

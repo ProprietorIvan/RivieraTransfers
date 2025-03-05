@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 
 import { ImagePlus, Upload, X } from "lucide-react";
 import Card from "./Card";
@@ -8,6 +9,7 @@ import Input from "./Input";
 import { useCallback, useEffect, useState } from "react";
 import { AiService } from "@/ai/ai-service";
 import AskContactsForQuote from "./AskContactsForQuote";
+import fileToBase64 from "@/utils/fileToBase64";
 
 interface QuoteProps {
   examples: string[];
@@ -19,7 +21,7 @@ export type ContactForm = {
   email: string;
   address: string;
   question?: string;
-}
+};
 
 const Quote = ({ examples, context }: QuoteProps) => {
   const [isDragging, setIsDragging] = useState(false);
@@ -38,9 +40,9 @@ const Quote = ({ examples, context }: QuoteProps) => {
     phone: "",
     email: "",
     address: "",
-    question: ''
+    question: "",
   });
-  const [imgs, setImgs] = useState<string[]>([])
+  const [imgs, setImgs] = useState<string[]>([]);
 
   useEffect(() => {
     if (currentCharIndex < examples[currentExampleIndex].length) {
@@ -85,8 +87,8 @@ const Quote = ({ examples, context }: QuoteProps) => {
     const droppedFiles = Array.from(e.dataTransfer.files);
     if (droppedFiles?.length > 0) {
       setFiles((prev) => [...prev, ...droppedFiles]);
-      Promise.all(droppedFiles.map(fileToBase64)).then(res => {
-        setImgs(prev => [...prev, ...res]);
+      Promise.all(droppedFiles.map(fileToBase64)).then((res) => {
+        setImgs((prev) => [...prev, ...res]);
       });
     }
   }, []);
@@ -98,16 +100,16 @@ const Quote = ({ examples, context }: QuoteProps) => {
         const newUrls = newFiles.map((file) => URL.createObjectURL(file));
         setFiles((prev) => [...prev, ...newFiles]);
         setImageUrls((prev) => [...prev, ...newUrls]);
-        Promise.all(newFiles.map(fileToBase64)).then(res => {
-          setImgs(prev => [...prev, ...res])
-        })
+        Promise.all(newFiles.map(fileToBase64)).then((res) => {
+          setImgs((prev) => [...prev, ...res]);
+        });
       }
     },
     []
   );
 
   function prepareIMGTag(imgs: string[]) {
-    return imgs.map(img => `<img alt='' src='${img}' />`)
+    return imgs.map((img) => `<img alt='' src='${img}' />`);
   }
 
   const removeFile = useCallback(
@@ -119,15 +121,6 @@ const Quote = ({ examples, context }: QuoteProps) => {
     },
     [imageUrls]
   );
-
-  const fileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = (error) => reject(error);
-    });
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -158,8 +151,12 @@ const Quote = ({ examples, context }: QuoteProps) => {
     <>
       <div className="mx-auto text-center">
         <div className="mb-6">
-          <h3 className="text-xl font-medium mb-1">Tell us about your project</h3>
-          <p className="text-sm text-black/60">Magical technology. Human expertise. Instant results.</p>
+          <h3 className="text-xl font-medium mb-1">
+            Tell us about your project
+          </h3>
+          <p className="text-sm text-black/60">
+            Magical technology. Human expertise. Instant results.
+          </p>
         </div>
       </div>
       <Card
@@ -176,7 +173,7 @@ const Quote = ({ examples, context }: QuoteProps) => {
                 onChange={(e) => setText(e.target.value)}
                 className="w-full h-12 sm:h-16 px-4 sm:px-8 text-base sm:text-lg placeholder-gray-700 bg-gray-50/50 border-none rounded-xl sm:rounded-2xl focus:ring-2 focus:ring-gray-900 transition-all duration-300 ease-in-out shadow-sm hover:bg-gray-50/80"
               />
-              
+
               {/* Image Upload Area */}
               <div
                 className={`relative rounded-xl sm:rounded-2xl transition-all duration-300 ease-in-out ${
@@ -199,11 +196,13 @@ const Quote = ({ examples, context }: QuoteProps) => {
                 />
                 <label
                   htmlFor="image-upload"
-                  className="h-12 sm:h-16 w-[200px] group flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-black/5 hover:bg-yellow-50 transition-colors border-2 border-transparent hover:border-yellow-200 cursor-pointer"
+                  className="h-12 sm:h-16 w-100 md:w-[200px] group flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-black/5 hover:bg-yellow-50 transition-colors border-2 border-transparent hover:border-yellow-200 cursor-pointer"
                 >
                   <ImagePlus className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" />
                   <span className="font-medium text-black/70">
-                    {files.length === 0 ? 'Add photos' : `${files.length} photo${files.length !== 1 ? 's' : ''}`}
+                    {files.length === 0
+                      ? "Add photos"
+                      : `${files.length} photo${files.length !== 1 ? "s" : ""}`}
                   </span>
                 </label>
               </div>
@@ -242,7 +241,11 @@ const Quote = ({ examples, context }: QuoteProps) => {
                 type="submit"
                 disabled={isLoading}
                 className={`w-full bg-black text-white py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors hover:text-black
-                  ${isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-[#ffc527]"}`}
+                  ${
+                    isLoading
+                      ? "opacity-50 cursor-not-allowed"
+                      : "hover:bg-[#ffc527]"
+                  }`}
               >
                 {isLoading ? (
                   <span>Processing...</span>
@@ -273,24 +276,25 @@ const Quote = ({ examples, context }: QuoteProps) => {
                   isBlurred={isQuoteBlurred}
                   content={quote}
                 />
-                {isQuoteBlurred ?
+                {isQuoteBlurred ? (
                   <AskContactsForQuote
                     quote={quote}
+                    query={text}
                     type="drywall"
                     handleIsBlurred={setIsQuoteBlurred}
                     contactForm={contactForm}
                     setContactForm={setContactForm}
-                    imgs={files}
+                    imgs={imgs}
                   />
-                  :
+                ) : (
                   <QuoteResult
-                    quote={quote}
-                    type="drywall"
-                    handleIsBlurred={setIsQuoteBlurred}
-                    contactForm={contactForm}
-                    setContactForm={setContactForm}
+                  // quote={quote}
+                  // type="drywall"
+                  // handleIsBlurred={setIsQuoteBlurred}
+                  // contactForm={contactForm}
+                  // setContactForm={setContactForm}
                   />
-                }
+                )}
               </div>
             </div>
           )}

@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 
 interface NavigationProps {
   currentPage?: string;
@@ -19,26 +18,21 @@ const Navigation = ({
 
   const navLinks = [
     { text: "HOME", url: "/" },
-    { text: "OUR FLEET", url: "/fleet" },
-    { text: "TESTIMONIALS", url: "/testimonials" },
+    { text: "SERVICES", url: "/services" },
+    { text: "DESTINATIONS", url: "/destinations" },
+    { text: "EVENTS", url: "/events" },
     { text: "CONTACT", url: "/contact" },
   ];
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 bg-gradient-to-b from-[#93C5FD]/80 to-transparent backdrop-blur-sm">
+    <nav className="absolute top-0 left-0 right-0 z-50 bg-gradient-to-b from-blue-900/80 to-transparent backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-32">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="relative w-48 h-20">
-              <Image
-                src="/logo.png"
-                alt="Riviera Yachts"
-                fill
-                className="object-contain object-left"
-                priority
-              />
-            </div>
+            <h1 className="text-2xl md:text-3xl font-['Alex_Brush'] text-white tracking-wider">
+              Monaco Express
+            </h1>
           </div>
 
           {/* Desktop Navigation */}
@@ -77,7 +71,7 @@ const Navigation = ({
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-gradient-to-b from-[#93C5FD]/95 to-[#93C5FD]/50 backdrop-blur-sm shadow-lg">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-gradient-to-b from-blue-900/95 to-blue-900/50 backdrop-blur-sm shadow-lg">
             <div className="px-4 py-2 space-y-1">
               {navLinks.map((link, index) => (
                 <a

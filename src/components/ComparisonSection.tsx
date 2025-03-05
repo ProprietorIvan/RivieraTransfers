@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  ArrowRight,
-  Wine,
-  Compass,
-  Waves,
-  Utensils,
-  Shield,
-  Star,
-} from "lucide-react";
+import { ArrowRight, Car, MapPin, Clock, Shield, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -16,39 +8,39 @@ import Head from "next/head";
 const ComparisonSection = () => {
   const features = [
     {
-      title: "Unmatched Luxury",
-      description: "Step into a world of opulence",
+      title: "Premium Fleet",
+      description: "Luxury vehicles for every occasion",
       details:
-        "Experience unparalleled luxury with master suites featuring panoramic views, private balconies, and state-of-the-art entertainment systems. Every detail is crafted for your comfort.",
-      icon: Star,
-      image: "/photos/boat1/000003.jpg",
+        "Our fleet includes the latest luxury sedans, all equipped with premium amenities and climate control. Experience comfort and style in every journey.",
+      icon: Car,
+      image: "/images/cars/5.avif",
       stats: [
-        { value: "50m+", label: "YACHT LENGTH" },
-        { value: "5", label: "MASTER SUITES" },
+        { value: "24/7", label: "AVAILABILITY" },
+        { value: "100%", label: "LUXURY FLEET" },
       ],
     },
     {
-      title: "Exquisite Dining",
-      description: "Culinary excellence at sea",
+      title: "Professional Service",
+      description: "Expert chauffeurs at your service",
       details:
-        "Our world-class chefs create personalized menus featuring the finest ingredients, paired with premium wines from our curated cellar. From intimate dinners to grand celebrations.",
-      icon: Utensils,
-      image: "/photos/boat1/000002.jpg",
+        "Our experienced chauffeurs are trained to provide the highest level of service. They know the best routes, speak multiple languages, and ensure your journey is smooth and comfortable.",
+      icon: Shield,
+      image: "/images/cars/1.jpg",
       stats: [
-        { value: "24/7", label: "PRIVATE CHEF" },
-        { value: "350+", label: "WINE SELECTION" },
+        { value: "10+", label: "LANGUAGES" },
+        { value: "15+", label: "YEARS EXPERIENCE" },
       ],
     },
     {
-      title: "Elite Destinations",
-      description: "Discover hidden Mediterranean gems",
+      title: "Strategic Routes",
+      description: "Efficient transfers across the Riviera",
       details:
-        "Navigate the most prestigious ports and secluded coves of the Mediterranean. From Monaco's glamour to Sardinia's pristine beaches, every destination is extraordinary.",
-      icon: Compass,
-      image: "/photos/boat1/000007.jpg",
+        "From Monaco to Nice Airport, Cannes to Monte Carlo, or any destination in between. Our drivers know the best routes to ensure timely arrivals, even during peak hours or special events.",
+      icon: MapPin,
+      image: "/images/cars/2.webp",
       stats: [
-        { value: "15+", label: "DESTINATIONS" },
-        { value: "100%", label: "EXCLUSIVE ACCESS" },
+        { value: "30+", label: "DESTINATIONS" },
+        { value: "100%", label: "ON-TIME GUARANTEE" },
       ],
     },
   ];
@@ -61,12 +53,12 @@ const ComparisonSection = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Riviera Yachts Charter Services",
+    name: "Monaco Express Transfer Services",
     description:
-      "Luxury yacht charter services in Monaco and the French Riviera",
+      "Premium car transfer services in Monaco and the French Riviera",
     provider: {
       "@type": "Organization",
-      name: "Riviera Yachts",
+      name: "Monaco Express",
       image: "/logo.png",
     },
     areaServed: {
@@ -75,7 +67,7 @@ const ComparisonSection = () => {
     },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Yacht Charter Services",
+      name: "Transfer Services",
       itemListElement: features.map((feature) => ({
         "@type": "Offer",
         itemOffered: {
@@ -90,14 +82,14 @@ const ComparisonSection = () => {
   return (
     <>
       <Head>
-        <title>Luxury Yacht Charter Services in Monaco | Riviera Yachts</title>
+        <title>Luxury Car Transfer Services in Monaco | Monaco Express</title>
         <meta
           name="description"
-          content="Experience the ultimate in maritime luxury with Riviera Yachts. Premium yacht charters featuring world-class amenities, gourmet dining, and exclusive Mediterranean adventures."
+          content="Experience premium car transfers with Monaco Express. Professional chauffeurs, luxury vehicles, and reliable service across the French Riviera."
         />
         <meta
           name="keywords"
-          content="luxury yacht charter, Monaco yacht rental, Mediterranean yacht cruise, private yacht charter, luxury boat rental Monaco"
+          content="Monaco car transfer, Nice airport transfer, French Riviera transfers, Grand Prix transfers, luxury car service Monaco"
         />
         <script
           type="application/ld+json"
@@ -119,8 +111,7 @@ const ComparisonSection = () => {
               Experience Excellence
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Discover the epitome of luxury yachting with our meticulously
-              curated experiences
+              Discover the epitome of luxury transfers with our premium service
             </p>
           </motion.div>
 
@@ -152,21 +143,21 @@ const ComparisonSection = () => {
                       </span>
                     </div>
 
-                    <h3 className="text-3xl md:text-4xl font-serif text-slate-900 drop-shadow-sm">
+                    <h3 className="text-3xl md:text-4xl font-serif text-black drop-shadow-sm">
                       {feature.title}
                     </h3>
 
-                    <p className="text-lg text-slate-700 leading-relaxed">
+                    <p className="text-lg text-black leading-relaxed">
                       {feature.details}
                     </p>
 
                     <div className="grid grid-cols-2 gap-8">
                       {feature.stats.map((stat, idx) => (
                         <div key={idx} className="text-center">
-                          <div className="text-3xl font-serif text-slate-900 mb-2">
+                          <div className="text-3xl font-serif text-black mb-2">
                             {stat.value}
                           </div>
-                          <div className="text-sm tracking-wider text-slate-500">
+                          <div className="text-sm tracking-wider text-black">
                             {stat.label}
                           </div>
                         </div>
@@ -177,7 +168,7 @@ const ComparisonSection = () => {
                       href="/contact"
                       className="inline-flex items-center gap-2 text-black hover:text-slate-700 transition-colors group font-medium"
                     >
-                      <span className="font-medium">Learn More</span>
+                      <span className="font-medium">Book Now</span>
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -187,14 +178,16 @@ const ComparisonSection = () => {
                       index % 2 === 0 ? "md:order-last" : ""
                     }`}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10" />
                     <Image
                       src={feature.image}
                       alt={feature.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 50vw"
+                      priority={index === 0}
                     />
+                    <div className="absolute inset-0 bg-black/10 z-20" />
                   </div>
                 </div>
               </motion.div>
@@ -210,10 +203,10 @@ const ComparisonSection = () => {
             className="mt-24 text-center"
           >
             <Link
-              href="/fleet"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white rounded-full hover:bg-slate-900 transition-colors group shadow-lg shadow-slate-200"
+              href="/services"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white rounded-full hover:bg-gray-800 transition-colors group shadow-lg shadow-slate-200"
             >
-              <span className="font-medium">View Our Fleet</span>
+              <span className="font-medium">View Our Services</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>

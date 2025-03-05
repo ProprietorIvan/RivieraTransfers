@@ -6,7 +6,6 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
@@ -15,56 +14,50 @@ const Footer = () => {
       title: "Navigation",
       links: [
         { text: "Home", url: "/" },
-        { text: "Our Fleet", url: "/fleet" },
-        { text: "Testimonials", url: "/testimonials" },
+        { text: "Services", url: "/services" },
+        { text: "Destinations", url: "/destinations" },
+        { text: "Events", url: "/events" },
         { text: "Contact", url: "/contact" },
       ],
     },
     {
       title: "Services",
       links: [
-        { text: "Yacht Charter", url: "/services/charter" },
-        { text: "Private Events", url: "/services/events" },
-        { text: "Corporate Retreats", url: "/services/corporate" },
-        { text: "Special Occasions", url: "/services/occasions" },
+        { text: "Airport Transfers", url: "/services/airport" },
+        { text: "Grand Prix Transfers", url: "/services/grand-prix" },
+        { text: "Tennis Masters", url: "/services/tennis" },
+        { text: "Corporate Events", url: "/services/corporate" },
       ],
     },
     {
       title: "Contact",
       items: [
         { icon: Phone, text: "+377 93 50 12 34" },
-        { icon: Mail, text: "info@rivierayachts.com" },
-        { icon: MapPin, text: "Port Hercule, Monaco" },
+        { icon: Mail, text: "info@monaco-express.com" },
+        { icon: MapPin, text: "Monte Carlo, Monaco" },
       ],
     },
   ];
 
   const socialLinks = [
-    { icon: Facebook, url: "https://facebook.com" },
-    { icon: Instagram, url: "https://instagram.com" },
-    { icon: Linkedin, url: "https://linkedin.com" },
+    { icon: Facebook, url: "https://facebook.com/monacoexpress" },
+    { icon: Instagram, url: "https://instagram.com/monacoexpress" },
+    { icon: Linkedin, url: "https://linkedin.com/company/monacoexpress" },
   ];
 
   return (
-    <footer className="relative bg-gradient-to-t from-[#93C5FD]/80 to-transparent backdrop-blur-sm text-slate-900">
+    <footer className="relative bg-gradient-to-t from-blue-900/80 to-transparent backdrop-blur-sm text-slate-900">
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo and Description */}
           <div className="space-y-6">
+            <h2 className="text-3xl font-['Alex_Brush'] text-white tracking-wider">
+              Monaco Express
+            </h2>
             <p className="text-slate-700 text-lg">
-              Experience the epitome of luxury yachting in the Mediterranean
-              with Riviera Yachts.
+              Experience premium car transfers in Monaco and the French Riviera
+              with Monaco Express.
             </p>
-            <Link href="/" className="block">
-              <div className="relative w-48 h-16">
-                <Image
-                  src="/logo.png"
-                  alt="Riviera Yachts"
-                  fill
-                  className="object-contain object-left"
-                />
-              </div>
-            </Link>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon;
@@ -117,7 +110,7 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-slate-900/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-700 text-sm">
-              © {new Date().getFullYear()} Riviera Yachts. All rights reserved.
+              © {new Date().getFullYear()} Monaco Express. All rights reserved.
             </p>
             <div className="flex gap-8">
               <Link

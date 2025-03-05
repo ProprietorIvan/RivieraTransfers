@@ -1,219 +1,192 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import Navigation from '@/components/Navigation';
-import { Shield, Clock, Wrench, BadgeCheck, Phone, Star, MapPin, AlertTriangle } from 'lucide-react';
+import React from "react";
+import Navigation from "@/components/Navigation";
+import {
+  Star,
+  Phone,
+  ArrowRight,
+  Car,
+  Users,
+  MapPin,
+  Clock,
+  Shield,
+  Award,
+} from "lucide-react";
+import Image from "next/image";
 
-const AboutUs = () => {
-  const emergencyStats = [
-    {
-      number: "60",
-      unit: "Minutes",
-      label: "Response Time",
-      icon: Clock
-    },
-    {
-      number: "24/7",
-      unit: "365",
-      label: "Emergency Service",
-      icon: AlertTriangle
-    },
-    {
-      number: "100%",
-      unit: "Areas",
-      label: "Brooklyn Coverage",
-      icon: MapPin
-    }
-  ];
+const values = [
+  {
+    title: "Excellence",
+    description: "We strive for excellence in every aspect of our service",
+    icon: <Star className="w-8 h-8" />,
+  },
+  {
+    title: "Reliability",
+    description: "Count on us for punctual and dependable transfers",
+    icon: <Shield className="w-8 h-8" />,
+  },
+  {
+    title: "Professionalism",
+    description: "Our team maintains the highest standards of service",
+    icon: <Award className="w-8 h-8" />,
+  },
+];
 
-  const expertise = [
-    {
-      title: "Rapid Emergency Response",
-      description: "When disaster strikes, every minute counts. Our team arrives within 60 minutes, fully equipped to begin water extraction immediately. No delays, no excuses.",
-      icon: AlertTriangle,
-      highlight: true
-    },
-    {
-      title: "Latest Restoration Technology",
-      description: "Our investment in cutting-edge equipment means faster water removal, more efficient drying, and better protection for your property.",
-      icon: Wrench
-    },
-    {
-      title: "Certified & Insured",
-      description: "Every team member is certified in water damage restoration and covered by comprehensive insurance. Your property is in safe hands.",
-      icon: Shield
-    },
-    {
-      title: "Transparent Process",
-      description: "From initial assessment to final restoration, you&apos;ll receive clear documentation and real-time updates throughout the entire process.",
-      icon: BadgeCheck
-    }
-  ];
+const AboutPage = () => {
+  const handleWhatsAppClick = () => {
+    window.open(
+      "https://wa.me/377678636346?text=Hello! I'd like to learn more about your services.",
+      "_blank"
+    );
+  };
 
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      
-      {/* Hero Section with Emergency Focus */}
-      <div className="relative bg-[#1C1917] text-white">
-        <div className="absolute inset-0">
-          <Image
-            src="/photos/homepage/1.jpg"
-            alt="Emergency Water Damage Response"
-            fill
-            className="object-cover opacity-20"
-            priority
-          />
+
+      {/* Hero Section */}
+      <section className="relative min-h-[600px] h-screen">
+        <div className="absolute inset-0 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute min-w-full min-h-full object-cover filter brightness-110 contrast-110"
+          >
+            <source src="/videos/background.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 py-24 sm:py-32">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Your Emergency Is
-              <span className="text-[#8B2635]"> Our Priority</span>
+
+        <div className="relative h-full max-w-7xl mx-auto px-4 flex items-center">
+          <div className="max-w-2xl text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif mb-4 sm:mb-6 drop-shadow-lg">
+              Our Story
             </h1>
-            <p className="text-xl md:text-2xl text-stone-300 mb-8">
-              Brooklyn&apos;s dedicated water damage specialists. Fast response, modern solutions, guaranteed results.
+            <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-white/90 drop-shadow">
+              Providing luxury transfers in Monaco and the French Riviera since
+              2010
             </p>
+
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link 
-                href="tel:+1 (833) 324-2818"
-                className="inline-flex items-center justify-center gap-2 bg-[#8B2635] text-white px-8 py-4 rounded-lg font-medium hover:bg-[#7A2230] transition-colors text-lg"
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("about-content")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="group flex items-center justify-center gap-2 bg-white text-black px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-100 transition-colors"
+              >
+                <Car className="w-6 h-6" />
+                <span>Learn More</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button
+                onClick={handleWhatsAppClick}
+                className="group flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white/10 transition-colors"
               >
                 <Phone className="w-6 h-6" />
-                Emergency: +1 (833) 324-2818
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-medium hover:bg-white hover:text-black transition-colors text-lg"
-              >
-                Get Free Assessment
-              </Link>
+                <span>Contact Us</span>
+              </button>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Emergency Response Stats */}
-      <div className="bg-[#1C1917]">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {emergencyStats.map((stat, index) => (
-              <div key={index} className="bg-[#2D2D2D] p-8 rounded-xl">
-                <div className="flex items-center gap-4 mb-4">
-                  <stat.icon className="w-8 h-8 text-[#8B2635]" />
-                  <div>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold text-white">{stat.number}</span>
-                      <span className="text-lg text-stone-400">{stat.unit}</span>
-                    </div>
-                    <span className="text-stone-400">{stat.label}</span>
-                  </div>
+      {/* About Content */}
+      <section className="py-20 bg-white" id="about-content">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl font-bold mb-6 text-black">
+                Your Trusted Partner in Luxury Transfers
+              </h2>
+              <p className="text-lg text-gray-600 mb-6">
+                Founded in 2010, Monaco Express has been at the forefront of
+                luxury transfer services in Monaco and the French Riviera. Our
+                commitment to excellence and customer satisfaction has made us
+                the preferred choice for discerning travelers and event
+                organizers.
+              </p>
+              <p className="text-lg text-gray-600 mb-8">
+                With a fleet of premium vehicles and a team of professional
+                chauffeurs, we ensure that every journey is comfortable, safe,
+                and punctual. Whether you&apos;re traveling for business or
+                pleasure, our service is tailored to meet your specific needs.
+              </p>
+              <div className="grid grid-cols-2 gap-6">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-black mb-2">13+</div>
+                  <div className="text-gray-600">Years Experience</div>
                 </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-black mb-2">
+                    1000+
+                  </div>
+                  <div className="text-gray-600">Happy Clients</div>
+                </div>
+              </div>
+            </div>
+            <div className="relative h-[600px] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/about/team.webp"
+                alt="Our Team"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 text-black">Our Values</h2>
+            <p className="text-lg text-gray-600">
+              The principles that guide our service
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12">
+            {values.map((value, index) => (
+              <div key={index} className="text-center group">
+                <div className="mb-4 inline-flex p-4 bg-black/5 rounded-full transition-all duration-300 group-hover:bg-black/10">
+                  {value.icon}
+                </div>
+                <h3 className="text-xl font-serif mb-2 text-black">
+                  {value.title}
+                </h3>
+                <p className="text-slate-600">{value.description}</p>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Main Content */}
-      <div className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Why Trust Us With Your Emergency?</h2>
-            <div className="w-24 h-1 bg-[#8B2635] mx-auto mb-8"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {expertise.map((item, index) => (
-              <div 
-                key={index}
-                className={`p-8 rounded-xl ${
-                  item.highlight 
-                    ? 'bg-[#1C1917] text-white' 
-                    : 'bg-stone-100'
-                }`}
-              >
-                <div className="flex items-start gap-4">
-                  <item.icon className={`w-8 h-8 ${
-                    item.highlight ? 'text-[#8B2635]' : 'text-[#1C1917]'
-                  }`} />
-                  <div>
-                    <h3 className={`text-xl font-bold mb-2 ${
-                      item.highlight ? 'text-white' : 'text-[#1C1917]'
-                    }`}>
-                      {item.title}
-                    </h3>
-                    <p className={
-                      item.highlight ? 'text-stone-300' : 'text-stone-600'
-                    }>
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* FAQ Section */}
-      <div className="py-20 px-4 bg-stone-100">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Common Questions</h2>
-            <div className="w-24 h-1 bg-[#8B2635] mx-auto"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-xl font-bold mb-2">How quickly can you respond?</h3>
-                <p className="text-stone-600">We guarantee a 60-minute response time for emergency calls anywhere in Brooklyn. Our teams are strategically positioned to reach you fast.</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">Are you certified and insured?</h3>
-                <p className="text-stone-600">Yes, our team holds all required certifications in water damage restoration, and we maintain comprehensive insurance coverage for your protection.</p>
-              </div>
-            </div>
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-xl font-bold mb-2">What areas do you cover?</h3>
-                <p className="text-stone-600">We service all Brooklyn neighborhoods, 24/7. From Williamsburg to Brighton Beach, we&apos;re there when you need us.</p>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">How do you handle emergencies?</h3>
-                <p className="text-stone-600">Our emergency response protocol includes immediate water extraction, damage assessment, and the deployment of industrial-grade drying equipment.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Call to Action */}
-      <div className="bg-[#1C1917] text-white py-16 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">
-            Don&apos;t Let Water Damage Wait
+      {/* CTA Section */}
+      <section className="py-16 bg-black">
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+            Experience Luxury Travel
           </h2>
-          <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-            <Link 
-              href="tel:+1 (833) 324-2818"
-              className="inline-flex items-center gap-2 bg-[#8B2635] text-white px-8 py-4 rounded-lg font-medium hover:bg-[#7A2230] transition-colors group"
-            >
-              <Phone className="w-6 h-6 group-hover:animate-pulse" />
-              Call Now: +1 (833) 324-2818
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-medium hover:bg-white hover:text-[#1C1917] transition-colors"
-            >
-              Schedule Inspection
-            </Link>
-          </div>
+          <p className="text-xl mb-8 text-white/90">
+            Book your premium transfer service today
+          </p>
+          <button
+            onClick={handleWhatsAppClick}
+            className="group inline-flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-full text-xl font-bold hover:bg-gray-100 transition-all duration-300"
+          >
+            <Phone className="w-6 h-6" />
+            <span>Contact Us</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
 
-export default AboutUs;
+export default AboutPage;

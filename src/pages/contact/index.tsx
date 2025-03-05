@@ -3,431 +3,422 @@ import Navigation from "@/components/Navigation";
 import {
   Phone,
   Mail,
-  MessageSquare,
-  Calendar,
-  Users,
-  Anchor,
-  Clock,
-  Euro,
   MapPin,
+  Clock,
+  Car,
+  Users,
+  Calendar,
+  ArrowRight,
 } from "lucide-react";
-import Image from "next/image";
-import Head from "next/head";
+import CalendarComponent from "@/components/Calendar";
+import { format } from "date-fns";
 
-const yachtCategories = [
-  {
-    title: "Luxury Day Yachts (30-50ft)",
-    description: "Perfect for day trips and coastal adventures",
-    yachts: [
-      {
-        name: "Sunseeker Portofino 40",
-        image: "/photos/boat1/000001.jpg",
-        specs: "40ft • Up to 8 guests • 2 cabins",
-      },
-      {
-        name: "Azimut 45",
-        image: "/photos/boat1/000002.jpg",
-        specs: "45ft • Up to 10 guests • 2 cabins",
-      },
-      {
-        name: "Princess V48",
-        image: "/photos/boat1/000003.jpg",
-        specs: "48ft • Up to 12 guests • 3 cabins",
-      },
-    ],
-  },
-  {
-    title: "Premium Cruising Yachts (50-80ft)",
-    description: "Ideal for extended cruising and luxury stays",
-    yachts: [
-      {
-        name: "Ferretti 75",
-        image: "/photos/boat1/000004.jpg",
-        specs: "75ft • Up to 12 guests • 4 cabins",
-      },
-      {
-        name: "Pershing 64",
-        image: "/photos/boat1/000005.jpg",
-        specs: "64ft • Up to 10 guests • 3 cabins",
-      },
-      {
-        name: "Riva 68",
-        image: "/photos/boat1/000006.jpg",
-        specs: "68ft • Up to 12 guests • 4 cabins",
-      },
-    ],
-  },
-  {
-    title: "Superyachts (80ft+)",
-    description: "The ultimate in luxury and prestige",
-    yachts: [
-      {
-        name: "Benetti Classic 120",
-        image: "/photos/boat1/000007.jpg",
-        specs: "120ft • Up to 12 guests • 6 cabins",
-      },
-      {
-        name: "Heesen 164",
-        image: "/photos/boat1/000008.jpg",
-        specs: "164ft • Up to 12 guests • 7 cabins",
-      },
-      {
-        name: "CRN Mega 200",
-        image: "/photos/boat1/000009.jpg",
-        specs: "200ft • Up to 12 guests • 8 cabins",
-      },
-    ],
-  },
-];
-
-const Contact = () => {
+const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
-    preferredContact: "email", // email, phone, or whatsapp
-    yachtSize: "",
-    guestCount: "",
-    tripDuration: "",
-    startDate: "",
-    endDate: "",
-    destination: "",
-    budget: "",
-    specialRequirements: "",
+    email: "",
+    pickup: "",
+    dropoff: "",
+    date: new Date(),
+    time: "",
+    passengers: "1",
+    notes: "",
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
-    // You can add your form submission logic here
+    setIsSuccess(true);
   };
 
-  const handleWhatsApp = () => {
-    const message = encodeURIComponent(
-      "Hello, I'm interested in chartering a yacht."
+  const handleWhatsAppClick = () => {
+    const message = `Hello! I'd like to book a transfer:
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Pickup: ${formData.pickup}
+Dropoff: ${formData.dropoff}
+Date: ${format(formData.date, "PPP")}
+Time: ${formData.time}
+Passengers: ${formData.passengers}
+Notes: ${formData.notes}`;
+
+    window.open(
+      `https://wa.me/377678636346?text=${encodeURIComponent(message)}`,
+      "_blank"
     );
-    window.open(`https://wa.me/+37793501234?text=${message}`, "_blank");
   };
+
+  const calendarCustomStyles = `
+    .react-calendar {
+      width: 100%;
+      max-width: 400px;
+      background: white;
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      padding: 1rem;
+    }
+
+    .react-calendar__tile {
+      padding: 1rem 0.5rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+    }
+
+    .react-calendar__tile--active {
+      background: #000000 !important;
+      color: white;
+    }
+
+    .react-calendar__tile--now {
+      background: #f3f4f6;
+    }
+
+    .react-calendar__month-view__days__day--weekend {
+      color: #000000 !important;
+    }
+
+    .react-calendar__navigation button {
+      font-size: 1.1rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+    }
+
+    .react-calendar__navigation button:enabled:hover,
+    .react-calendar__navigation button:enabled:focus {
+      background-color: #f3f4f6;
+    }
+
+    .react-calendar__month-view__weekdays {
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+    }
+  `;
 
   return (
-    <>
-      <Head>
-        <title>Charter Your Dream Yacht | Riviera Yachts</title>
-        <meta
-          name="description"
-          content="Experience the ultimate in luxury yacht charters. Choose from our premium fleet and let us create your perfect Mediterranean adventure."
-        />
-      </Head>
+    <div className="min-h-screen bg-white">
+      <Navigation />
 
-      <div className="min-h-screen bg-slate-50">
-        <Navigation transparent={false} />
+      {/* Hero Section */}
+      <section className="relative min-h-[600px] h-screen">
+        <div className="absolute inset-0 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute min-w-full min-h-full object-cover filter brightness-110 contrast-110"
+          >
+            <source src="/videos/background.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+        </div>
 
-        {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-b from-[#93C5FD]/10 to-transparent">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center">
-              <h1 className="text-4xl md:text-6xl font-serif mb-6 text-slate-900">
-                Your Journey Begins Here
-              </h1>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
-                Select from our curated fleet of luxury yachts and let us create
-                your perfect Mediterranean experience.
-              </p>
-              <div className="flex justify-center gap-6">
-                <button
-                  onClick={handleWhatsApp}
-                  className="inline-flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition-colors"
-                >
-                  <MessageSquare className="w-5 h-5" />
-                  <span>Chat on WhatsApp</span>
-                </button>
-                <a
-                  href="tel:+37793501234"
-                  className="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full hover:bg-slate-800 transition-colors"
-                >
-                  <Phone className="w-5 h-5" />
-                  <span>Call Us Now</span>
-                </a>
-              </div>
+        <div className="relative h-full max-w-7xl mx-auto px-4 flex items-center">
+          <div className="max-w-2xl text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif mb-4 sm:mb-6 drop-shadow-lg">
+              Contact Us
+            </h1>
+            <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-white/90 drop-shadow">
+              Book your luxury transfer or get in touch with our team
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("contact-form")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="group flex items-center justify-center gap-2 bg-white text-black px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-100 transition-colors"
+              >
+                <Car className="w-6 h-6" />
+                <span>Book Now</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button
+                onClick={handleWhatsAppClick}
+                className="group flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white/10 transition-colors"
+              >
+                <Phone className="w-6 h-6" />
+                <span>WhatsApp</span>
+              </button>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Yacht Categories */}
-        {yachtCategories.map((category, index) => (
-          <section key={index} className="py-16 bg-white">
-            <div className="max-w-7xl mx-auto px-4">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-serif mb-4 text-slate-900">
-                  {category.title}
-                </h2>
-                <p className="text-lg text-slate-600">{category.description}</p>
+      {/* Contact Form */}
+      <section className="py-20 bg-white" id="contact-form">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Contact Information */}
+            <div>
+              <h2 className="text-4xl font-bold mb-8 text-black">
+                Get in Touch
+              </h2>
+              <div className="space-y-8">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-black/5 rounded-full">
+                    <Phone className="w-6 h-6 text-black" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2 text-black">Phone</h3>
+                    <p className="text-gray-600">+377 678 636 346</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-black/5 rounded-full">
+                    <Mail className="w-6 h-6 text-black" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2 text-black">Email</h3>
+                    <p className="text-gray-600">info@monacoexpress.com</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-black/5 rounded-full">
+                    <MapPin className="w-6 h-6 text-black" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2 text-black">
+                      Location
+                    </h3>
+                    <p className="text-gray-600">Monaco, French Riviera</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-black/5 rounded-full">
+                    <Clock className="w-6 h-6 text-black" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2 text-black">Hours</h3>
+                    <p className="text-gray-600">24/7 Service Available</p>
+                  </div>
+                </div>
               </div>
-              <div className="grid md:grid-cols-3 gap-8">
-                {category.yachts.map((yacht, yachtIndex) => (
-                  <div key={yachtIndex} className="group relative">
-                    <div className="relative h-[300px] rounded-xl overflow-hidden">
-                      <Image
-                        src={yacht.image}
-                        alt={yacht.name}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+            </div>
+
+            {/* Booking Form */}
+            <div className="bg-gray-50 p-8 rounded-2xl">
+              <h2 className="text-4xl font-bold mb-8 text-black">
+                Book a Transfer
+              </h2>
+              {isSuccess ? (
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg
+                      className="w-8 h-8 text-green-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h3 className="text-xl font-medium mb-2">{yacht.name}</h3>
-                      <p className="text-sm text-white/90">{yacht.specs}</p>
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-black">
+                    Request Received!
+                  </h3>
+                  <p className="text-gray-600 mb-8">
+                    We&apos;ll contact you shortly to confirm your booking.
+                  </p>
+                  <button
+                    onClick={() => setIsSuccess(false)}
+                    className="text-black font-medium hover:underline"
+                  >
+                    Book Another Transfer
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent"
+                      value={formData.name}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent"
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Pickup Location
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent"
+                      value={formData.pickup}
+                      onChange={(e) =>
+                        setFormData({ ...formData, pickup: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Dropoff Location
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent"
+                      value={formData.dropoff}
+                      onChange={(e) =>
+                        setFormData({ ...formData, dropoff: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Date
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        readOnly
+                        required
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent cursor-pointer"
+                        value={format(formData.date, "PPP")}
+                        onClick={() => setShowCalendar(!showCalendar)}
+                      />
+                      {showCalendar && (
+                        <div className="absolute z-10 mt-2">
+                          <style>{calendarCustomStyles}</style>
+                          <CalendarComponent
+                            value={formData.date}
+                            onChange={(date) => {
+                              setFormData({ ...formData, date });
+                              setShowCalendar(false);
+                            }}
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        ))}
-
-        {/* Contact Form Section */}
-        <section className="py-20 bg-gradient-to-b from-white to-slate-50">
-          <div className="max-w-4xl mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-serif mb-4 text-slate-900">
-                Request a Quote
-              </h2>
-              <p className="text-lg text-slate-600">
-                Fill out the form below and our team will create a personalized
-                charter experience for you.
-              </p>
-            </div>
-
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-8 bg-white p-8 rounded-2xl shadow-lg"
-            >
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#93C5FD] focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#93C5FD] focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#93C5FD] focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Preferred Contact Method
-                  </label>
-                  <select
-                    name="preferredContact"
-                    value={formData.preferredContact}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#93C5FD] focus:border-transparent"
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Time
+                    </label>
+                    <input
+                      type="time"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent"
+                      value={formData.time}
+                      onChange={(e) =>
+                        setFormData({ ...formData, time: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Number of Passengers
+                    </label>
+                    <select
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent"
+                      value={formData.passengers}
+                      onChange={(e) =>
+                        setFormData({ ...formData, passengers: e.target.value })
+                      }
+                    >
+                      {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                        <option key={num} value={num}>
+                          {num} {num === 1 ? "Passenger" : "Passengers"}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Additional Notes
+                    </label>
+                    <textarea
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-black focus:border-transparent"
+                      rows={4}
+                      value={formData.notes}
+                      onChange={(e) =>
+                        setFormData({ ...formData, notes: e.target.value })
+                      }
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full bg-black text-white py-4 rounded-lg font-medium hover:bg-gray-900 transition-colors"
                   >
-                    <option value="email">Email</option>
-                    <option value="phone">Phone</option>
-                    <option value="whatsapp">WhatsApp</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Yacht Size Preference
-                  </label>
-                  <select
-                    name="yachtSize"
-                    value={formData.yachtSize}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#93C5FD] focus:border-transparent"
-                  >
-                    <option value="">Select size range</option>
-                    <option value="30-50ft">30-50ft</option>
-                    <option value="50-80ft">50-80ft</option>
-                    <option value="80ft+">80ft+</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Number of Guests
-                  </label>
-                  <input
-                    type="number"
-                    name="guestCount"
-                    value={formData.guestCount}
-                    onChange={handleChange}
-                    min="1"
-                    max="12"
-                    className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#93C5FD] focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Start Date
-                  </label>
-                  <input
-                    type="date"
-                    name="startDate"
-                    value={formData.startDate}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#93C5FD] focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    End Date
-                  </label>
-                  <input
-                    type="date"
-                    name="endDate"
-                    value={formData.endDate}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#93C5FD] focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Destination
-                  </label>
-                  <input
-                    type="text"
-                    name="destination"
-                    value={formData.destination}
-                    onChange={handleChange}
-                    placeholder="e.g., Monaco, Saint-Tropez"
-                    className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#93C5FD] focus:border-transparent"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Budget Range (€)
-                  </label>
-                  <select
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#93C5FD] focus:border-transparent"
-                  >
-                    <option value="">Select budget range</option>
-                    <option value="10000-25000">€10,000 - €25,000</option>
-                    <option value="25000-50000">€25,000 - €50,000</option>
-                    <option value="50000-100000">€50,000 - €100,000</option>
-                    <option value="100000+">€100,000+</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">
-                  Special Requirements
-                </label>
-                <textarea
-                  name="specialRequirements"
-                  value={formData.specialRequirements}
-                  onChange={handleChange}
-                  rows={4}
-                  placeholder="Tell us about any special requests, dietary requirements, or specific amenities you're looking for."
-                  className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-[#93C5FD] focus:border-transparent"
-                ></textarea>
-              </div>
-
-              <div className="flex justify-center">
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-full hover:bg-slate-800 transition-colors text-lg font-medium"
-                >
-                  <Anchor className="w-5 h-5" />
-                  <span>Request Quote</span>
-                </button>
-              </div>
-            </form>
-          </div>
-        </section>
-
-        {/* Contact Information */}
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div className="p-6">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#93C5FD]/10 mb-4">
-                  <MessageSquare className="w-6 h-6 text-[#93C5FD]" />
-                </div>
-                <h3 className="text-lg font-medium mb-2">WhatsApp</h3>
-                <p className="text-slate-600">Message us anytime</p>
-                <button
-                  onClick={handleWhatsApp}
-                  className="mt-4 text-[#93C5FD] hover:text-[#93C5FD]/80 transition-colors"
-                >
-                  Start Chat
-                </button>
-              </div>
-              <div className="p-6">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#93C5FD]/10 mb-4">
-                  <Phone className="w-6 h-6 text-[#93C5FD]" />
-                </div>
-                <h3 className="text-lg font-medium mb-2">Phone</h3>
-                <p className="text-slate-600">24/7 Availability</p>
-                <a
-                  href="tel:+37793501234"
-                  className="mt-4 block text-[#93C5FD] hover:text-[#93C5FD]/80 transition-colors"
-                >
-                  +377 93 50 12 34
-                </a>
-              </div>
-              <div className="p-6">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#93C5FD]/10 mb-4">
-                  <MapPin className="w-6 h-6 text-[#93C5FD]" />
-                </div>
-                <h3 className="text-lg font-medium mb-2">Location</h3>
-                <p className="text-slate-600">Port Hercule, Monaco</p>
-                <p className="text-slate-600">98000 Monaco</p>
-              </div>
+                    Submit Booking Request
+                  </button>
+                </form>
+              )}
             </div>
           </div>
-        </section>
-      </div>
-    </>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-black">
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+            Ready to Travel in Style?
+          </h2>
+          <p className="text-xl mb-8 text-white/90">
+            Book your luxury transfer service today
+          </p>
+          <button
+            onClick={handleWhatsAppClick}
+            className="group inline-flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-full text-xl font-bold hover:bg-gray-100 transition-all duration-300"
+          >
+            <Phone className="w-6 h-6" />
+            <span>Contact Us</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+      </section>
+    </div>
   );
 };
 
-export default Contact;
+export default ContactPage;

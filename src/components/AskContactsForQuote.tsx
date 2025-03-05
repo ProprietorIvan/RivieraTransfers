@@ -1,141 +1,133 @@
-import { Dispatch, FC, SetStateAction, useEffect, useRef,useState } from "react";
+import React, { useEffect, useRef } from "react";
+import { Phone, Mail, MapPin, User } from "lucide-react";
 import Input from "./Input";
-import { ContactForm } from "./Quote";
 
-const AskContactsForQuote: FC<{
-    type: string;
-    quote: string;
-    handleIsBlurred: (p: boolean) => void;
-    contactForm: ContactForm;
-    setContactForm: Dispatch<SetStateAction<ContactForm>>;
-    imgs: File[]
-}> = ({ type, quote, handleIsBlurred, contactForm, setContactForm, imgs }) => {
-    const head = useRef<HTMLFormElement>(null);
-    // const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-    //  const [errorMessage, setErrorMessage] = useState('');
+interface AskContactsForQuoteProps {
+  quote: string;
+  query: string;
+  type: string;
+  handleIsBlurred: (value: boolean) => void;
+  contactForm: {
+    name: string;
+    phone: string;
+    email: string;
+    address: string;
+    question?: string;
+  };
+  setContactForm: (form: any) => void;
+  imgs: string[];
+}
 
-    useEffect(() => {
-        if (head.current) {
-            head.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
-        }
-    }, [head.current])
+const AskContactsForQuote: React.FC<AskContactsForQuoteProps> = ({
+  quote,
+  query,
+  type,
+  handleIsBlurred,
+  contactForm,
+  setContactForm,
+  imgs,
+}) => {
+  const head = useRef<HTMLDivElement>(null);
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
-        const zapierWebhook =
-            "https://hooks.zapier.com/hooks/catch/20756347/2id440i/";
+  useEffect(() => {
+    if (head.current) {
+      head.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
-        try {
-            const response = await fetch(zapierWebhook, {
-                method: "POST",
-                mode: "no-cors",
-                body: JSON.stringify({
-                    type,
-                    quote,
-                    ...contactForm,
-                    imgs
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleIsBlurred(false);
+  };
 
-            handleIsBlurred(false);
-        } catch (error) {
-            console.error("Error submitting booking:", error);
-        }
-    };
-//       const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-//     setStatus('loading');
-//     setErrorMessage('');
+  return (
+    <div ref={head} className="mt-8">
+      <div className="text-center mb-6">
+        <h3 className="text-xl font-medium mb-2">Get Your Detailed Quote</h3>
+        <p className="text-sm text-gray-600">
+          Please provide your contact details to view the complete quote
+        </p>
+      </div>
 
-//     try {
-//       const formData = new FormData();
-//       formData.append('subject', 'inquire');
-//       formData.append('message', 'new inquire');
-      
-//       if (imgs) {
-//         imgs.forEach(image => {
-//           formData.append('images', image);
-//         });
-//       }
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="relative">
+            <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Input
+              type="text"
+              placeholder="Your Name"
+              value={contactForm.name}
+              onChange={(e) =>
+                setContactForm({ ...contactForm, name: e.target.value })
+              }
+              className="pl-10"
+              required
+            />
+          </div>
 
-//       const response = await fetch('/api/email', {
-//         method: 'POST',
-//         body: formData,
-//       });
+          <div className="relative">
+            <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Input
+              type="tel"
+              placeholder="Phone Number"
+              value={contactForm.phone}
+              onChange={(e) =>
+                setContactForm({ ...contactForm, phone: e.target.value })
+              }
+              className="pl-10"
+              required
+            />
+          </div>
 
-//       const data = await response.json();
+          <div className="relative">
+            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Input
+              type="email"
+              placeholder="Email Address"
+              value={contactForm.email}
+              onChange={(e) =>
+                setContactForm({ ...contactForm, email: e.target.value })
+              }
+              className="pl-10"
+              required
+            />
+          </div>
 
-//       if (!response.ok) {
-//         throw new Error(data.error || 'Failed to send email');
-//       }
+          <div className="relative">
+            <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Input
+              type="text"
+              placeholder="Address"
+              value={contactForm.address}
+              onChange={(e) =>
+                setContactForm({ ...contactForm, address: e.target.value })
+              }
+              className="pl-10"
+              required
+            />
+          </div>
+        </div>
 
-//       setStatus('success');
-//     //   // Reset form
-//     //   setTo('');
-//     //   setSubject('');
-//     //   setMessage('');
-//     //   setImages(null);
+        <div className="relative">
+          <Input
+            type="text"
+            placeholder="Additional Notes (Optional)"
+            value={contactForm.question}
+            onChange={(e) =>
+              setContactForm({ ...contactForm, question: e.target.value })
+            }
+          />
+        </div>
 
-//     } catch (error) {
-//       setStatus('error');
-//       setErrorMessage(error instanceof Error ? error.message : 'Failed to send email');
-//     }
-//   };
-    return (
-        <>
-            <h6 className="text-xl text-center font-bold" >Your quote is ready</h6>
-            <form ref={head} onSubmit={handleSubmit} className="p-6 space-y-4">
-                <Input
-                    placeholder="Your Name"
-                    value={contactForm.name}
-                    onChange={(e) =>
-                        setContactForm({ ...contactForm, name: e.target.value })
-                    }
-                    className="h-12 bg-white border-gray-200 rounded-xl text-gray-900 focus:ring-gray-900"
-                    required
-                />
-                <Input
-                    placeholder="Phone Number"
-                    type="tel"
-                    value={contactForm.phone}
-                    onChange={(e) =>
-                        setContactForm({ ...contactForm, phone: e.target.value })
-                    }
-                    className="h-12 bg-white border-gray-200 rounded-xl text-gray-900 focus:ring-gray-900"
-                    required
-                />
-                <Input
-                    placeholder="Email Address"
-                    type="email"
-                    value={contactForm.email}
-                    onChange={(e) =>
-                        setContactForm({ ...contactForm, email: e.target.value })
-                    }
-                    className="h-12 bg-white border-gray-200 rounded-xl text-gray-900 focus:ring-gray-900"
-                    required
-                />
-                <Input
-                    placeholder="Your Address"
-                    value={contactForm.address}
-                    onChange={(e) =>
-                        setContactForm({ ...contactForm, address: e.target.value })
-                    }
-                    className="h-12 bg-white border-gray-200 rounded-xl text-gray-900 focus:ring-gray-900"
-                    required
-                />
-
-                <button
-                    type="submit"
-                    className="w-full bg-gray-900 text-white p-6 rounded-2xl mt-4 hover:bg-[#ffc527] hover:text-black"
-                >
-                    Get your quote
-                </button>
-            </form>
-        </>
-    );
+        <button
+          type="submit"
+          className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-900 transition-colors"
+        >
+          View Complete Quote
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default AskContactsForQuote;

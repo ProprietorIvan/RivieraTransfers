@@ -1,59 +1,88 @@
-import { Star } from "lucide-react";
-import Card from "./Card";
+import React from "react";
+import { Star, Quote } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Testimonials = () => {
-  const renderTestimonials = () => {
-    const testimonials = [
-      {
-        name: "James Harrison",
-        role: "Luxury Yacht Owner",
-        text: "Riviera Yachts provided an exceptional experience from start to finish. Their attention to detail and professional crew made our Mediterranean voyage truly unforgettable.",
-      },
-      {
-        name: "Sofia Laurent",
-        role: "Charter Client",
-        text: "The yacht we chartered exceeded all expectations. From the immaculate condition to the five-star service, every moment was pure luxury. Will definitely book again!",
-      },
-      {
-        name: "Alessandro Romano",
-        role: "Corporate Event Planner",
-        text: "Organized a corporate retreat through Riviera Yachts. The team's expertise in planning and execution made our event a tremendous success. Highly recommended!",
-      },
-    ];
+  const testimonials = [
+    {
+      name: "James Wilson",
+      role: "Business Executive",
+      location: "London, UK",
+      content:
+        "The service was exceptional. The black Mercedes S-Class was immaculate, and the chauffeur was professional and punctual. Perfect for my business meetings in Monaco.",
+      rating: 5,
+    },
+    {
+      name: "Sophie Laurent",
+      role: "Luxury Travel Consultant",
+      location: "Paris, France",
+      content:
+        "As someone who arranges luxury travel experiences, I can say Monaco Express sets the standard. Their fleet of black sedans and attention to detail is unmatched.",
+      rating: 5,
+    },
+    {
+      name: "Michael Chen",
+      role: "International Investor",
+      location: "Singapore",
+      content:
+        "The most reliable and luxurious transfer service in Monaco. The black BMW 7 Series was perfect for my needs, and the service was consistently excellent.",
+      rating: 5,
+    },
+  ];
 
-    return testimonials.map((review, index) => (
-      <Card
-        key={index}
-        className="bg-white/80 backdrop-blur-sm p-8 border-none hover:bg-white hover:shadow-lg transition-all duration-300 group rounded-2xl"
-      >
-        <div className="flex gap-1 mb-4">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-          ))}
-        </div>
-        <p className="text-slate-600 text-sm md:text-base italic mb-4">
-          &ldquo;{review.text}&rdquo;
-        </p>
-        <div className="mt-auto">
-          <h3 className="font-serif text-lg">{review.name}</h3>
-          <p className="text-black/90 text-sm">{review.role}</p>
-        </div>
-      </Card>
-    ));
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-slate-100">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-serif text-center mb-4">
-          Client Testimonials
-        </h2>
-        <p className="text-slate-600 text-center max-w-2xl mx-auto mb-12">
-          Discover why discerning clients trust Riviera Yachts for their luxury
-          maritime experiences
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {renderTestimonials()}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          variants={fadeInUp}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-serif mb-6 text-black">
+            Client Testimonials
+          </h2>
+          <p className="text-xl text-black max-w-3xl mx-auto">
+            Experience luxury transfers through the eyes of our valued clients
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              variants={fadeInUp}
+              className="bg-white p-8 rounded-2xl shadow-lg border border-black/5 hover:shadow-xl transition-shadow"
+            >
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-black text-black" />
+                ))}
+              </div>
+              <Quote className="w-8 h-8 text-black mb-4" />
+              <p className="text-black text-lg mb-6 leading-relaxed">
+                &ldquo;{testimonial.content}&rdquo;
+              </p>
+              <div>
+                <h4 className="text-black font-medium text-lg">
+                  {testimonial.name}
+                </h4>
+                <p className="text-black/80">{testimonial.role}</p>
+                <p className="text-black/60 text-sm">{testimonial.location}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
