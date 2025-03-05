@@ -24,29 +24,85 @@ const Home = () => {
     router.push(path);
   };
 
-  // Structured data for rich snippets
+  // Comprehensive structured data for rich snippets
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Monaco Express",
     description:
-      "Premium car transfer services in Monaco, Nice, and the French Riviera",
+      "Premium luxury car transfer services in Monaco, Nice, and the French Riviera. Specializing in airport transfers, Grand Prix transportation, and corporate events.",
     url: "https://monaco-express.com",
     logo: "https://monaco-express.com/logo.png",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "Monte Carlo",
       addressLocality: "Monaco",
       addressCountry: "MC",
+      postalCode: "98000",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+377 6 78 63 63 46",
+      contactType: "customer service",
+      email: "info@monaco-express.com",
+      areaServed: "FR,MC",
+      availableLanguage: ["English", "French", "Italian"],
     },
     sameAs: [
       "https://www.facebook.com/monacoexpress",
       "https://www.instagram.com/monacoexpress",
-      "https://twitter.com/monacoexpress",
+      "https://www.linkedin.com/company/monacoexpress",
     ],
     offers: {
       "@type": "Offer",
       description: "Luxury car transfers in the French Riviera",
       areaServed: "French Riviera",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        priceCurrency: "EUR",
+        price: "150",
+      },
+    },
+    serviceArea: {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: "43.7384",
+        longitude: "7.4246",
+      },
+      geoRadius: "50000",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Transfer Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Airport Transfers",
+            description:
+              "Luxury transfers to and from Nice Côte d'Azur Airport",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Grand Prix Transfers",
+            description: "Premium transportation during the Monaco Grand Prix",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Corporate Events",
+            description:
+              "Professional transfers for business meetings and events",
+          },
+        },
+      ],
     },
   };
 
@@ -54,55 +110,79 @@ const Home = () => {
     <>
       <Head>
         <title>
-          Luxury Car Transfers in Monaco & French Riviera | Monaco Express
+          Monaco Express - Premium Car Transfers in the French Riviera
         </title>
         <meta
           name="description"
-          content="Experience premium car transfers in Monaco, Nice, and the French Riviera. Professional service for airport transfers, Grand Prix events, and luxury travel."
+          content="Experience luxury car transfers in Monaco and the French Riviera. Professional airport transfers, Grand Prix transportation, and corporate event services. Book your premium transfer today."
         />
         <meta
           name="keywords"
-          content="Monaco car transfer, Nice airport transfer, French Riviera transfers, Grand Prix transfers, luxury car service Monaco"
+          content="Monaco transfers, French Riviera transfers, luxury car service, airport transfers, Grand Prix transfers, corporate transportation, Nice airport transfers, Monte Carlo transfers"
         />
-
-        {/* Open Graph tags */}
+        <meta name="author" content="Monaco Express" />
+        <meta name="robots" content="index, follow" />
         <meta
           property="og:title"
-          content="Luxury Car Transfers in Monaco & French Riviera | Monaco Express"
+          content="Monaco Express - Premium Car Transfers in the French Riviera"
         />
         <meta
           property="og:description"
-          content="Experience premium car transfers in Monaco, Nice, and the French Riviera. Professional service for airport transfers and luxury travel."
+          content="Experience luxury car transfers in Monaco and the French Riviera. Professional airport transfers, Grand Prix transportation, and corporate event services."
         />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://monaco-express.com" />
         <meta
           property="og:image"
-          content="https://monaco-express.com/og-image.jpg"
+          content="https://monaco-express.com/images/og-image.jpg"
         />
-
-        {/* Twitter Card tags */}
+        <meta property="og:url" content="https://monaco-express.com" />
+        <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Luxury Car Transfers in Monaco & French Riviera | Monaco Express"
+          content="Monaco Express - Premium Car Transfers"
         />
         <meta
           name="twitter:description"
-          content="Experience premium car transfers in Monaco, Nice, and the French Riviera."
+          content="Experience luxury car transfers in Monaco and the French Riviera. Professional airport transfers, Grand Prix transportation, and corporate event services."
         />
         <meta
           name="twitter:image"
-          content="https://monaco-express.com/twitter-image.jpg"
+          content="https://monaco-express.com/images/twitter-image.jpg"
         />
-
-        {/* Additional meta tags */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5"
-        />
-        <meta name="theme-color" content="#1a365d" />
         <link rel="canonical" href="https://monaco-express.com" />
+
+        {/* Additional SEO meta tags */}
+        <meta name="geo.region" content="MC" />
+        <meta name="geo.position" content="43.7384;7.4246" />
+        <meta name="ICBM" content="43.7384, 7.4246" />
+        <meta name="geo.placename" content="Monaco" />
+        <meta name="geo.region" content="FR-MC" />
+
+        {/* WhatsApp Business API meta tags */}
+        <meta
+          property="business:contact_data:street_address"
+          content="Monte Carlo, Monaco"
+        />
+        <meta
+          property="business:contact_data:email"
+          content="info@monaco-express.com"
+        />
+        <meta
+          property="business:contact_data:phone"
+          content="+377 6 78 63 63 46"
+        />
+        <meta
+          property="business:contact_data:website"
+          content="https://monaco-express.com"
+        />
+        <meta
+          property="business:contact_data:category"
+          content="Transportation Services"
+        />
+        <meta
+          property="business:contact_data:description"
+          content="Premium luxury car transfer services in Monaco and the French Riviera. Specializing in airport transfers, Grand Prix transportation, and corporate events."
+        />
 
         {/* Structured data */}
         <script

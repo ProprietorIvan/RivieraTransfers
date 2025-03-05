@@ -32,7 +32,7 @@ const Footer = () => {
     {
       title: "Contact",
       items: [
-        { icon: Phone, text: "+377 93 50 12 34" },
+        { icon: Phone, text: "+377 6 78 63 63 46" },
         { icon: Mail, text: "info@monaco-express.com" },
         { icon: MapPin, text: "Monte Carlo, Monaco" },
       ],
