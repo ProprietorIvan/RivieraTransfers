@@ -16,7 +16,7 @@ const Contact = () => {
         setTimeout(() => setCopiedEmail(false), 1500);
       }
     } catch (err) {
-      console.error('Failed to copy:', err);
+      console.error("Failed to copy:", err);
     }
   };
 
@@ -33,8 +33,8 @@ const Contact = () => {
           <button
             onClick={() => copyToClipboard("7786534862", true)}
             className={`flex items-center justify-center px-6 sm:px-8 py-4 rounded-full transition-all duration-200 group ${
-              copiedPhone 
-                ? "bg-green-600 text-white scale-95" 
+              copiedPhone
+                ? "bg-green-600 text-white scale-95"
                 : "bg-gray-900 text-white hover:bg-gray-800"
             }`}
           >
@@ -43,9 +43,7 @@ const Contact = () => {
             ) : (
               <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             )}
-            <span>
-              {copiedPhone ? "Copied!" : "(778) 653-4862"}
-            </span>
+            <span>{copiedPhone ? "Copied!" : "+377 6 78 63 63 46"}</span>
             {!copiedPhone && (
               <Copy className="w-4 h-4 sm:w-5 sm:h-5 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             )}
@@ -54,8 +52,8 @@ const Contact = () => {
           <button
             onClick={() => copyToClipboard("info@azhandyman.ca", false)}
             className={`flex items-center justify-center px-6 sm:px-8 py-4 rounded-full transition-all duration-200 group ${
-              copiedEmail 
-                ? "bg-green-600 text-white scale-95" 
+              copiedEmail
+                ? "bg-green-600 text-white scale-95"
                 : "bg-white text-gray-900 hover:bg-gray-50 shadow-sm"
             }`}
           >
