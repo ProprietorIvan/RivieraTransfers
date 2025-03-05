@@ -1,31 +1,31 @@
 import React from "react";
 import { Star, Quote } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "next-i18next";
 
 const Testimonials = () => {
+  const { t } = useTranslation("common");
+
   const testimonials = [
     {
-      name: "James Wilson",
-      role: "Business Executive",
-      location: "London, UK",
-      content:
-        "The service was exceptional. The black Mercedes S-Class was immaculate, and the chauffeur was professional and punctual. Perfect for my business meetings in Monaco.",
+      name: t("testimonials.james.name"),
+      role: t("testimonials.james.role"),
+      location: t("testimonials.james.location"),
+      content: t("testimonials.james.content"),
       rating: 5,
     },
     {
-      name: "Sophie Laurent",
-      role: "Luxury Travel Consultant",
-      location: "Paris, France",
-      content:
-        "As someone who arranges luxury travel experiences, I can say Monaco Express sets the standard. Their fleet of black sedans and attention to detail is unmatched.",
+      name: t("testimonials.sophie.name"),
+      role: t("testimonials.sophie.role"),
+      location: t("testimonials.sophie.location"),
+      content: t("testimonials.sophie.content"),
       rating: 5,
     },
     {
-      name: "Michael Chen",
-      role: "International Investor",
-      location: "Singapore",
-      content:
-        "The most reliable and luxurious transfer service in Monaco. The black BMW 7 Series was perfect for my needs, and the service was consistently excellent.",
+      name: t("testimonials.michael.name"),
+      role: t("testimonials.michael.role"),
+      location: t("testimonials.michael.location"),
+      content: t("testimonials.michael.content"),
       rating: 5,
     },
   ];
@@ -47,10 +47,10 @@ const Testimonials = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-serif mb-6 text-black">
-            Client Testimonials
+            {t("testimonials.title")}
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto">
-            Experience luxury transfers through the eyes of our valued clients
+            {t("testimonials.subtitle")}
           </p>
         </motion.div>
 

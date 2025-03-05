@@ -1,0 +1,359 @@
+{
+  "navigation": {
+    "home": "Accueil",
+    "services": "Services",
+    "destinations": "Destinations",
+    "events": "Événements",
+    "contact": "Contact",
+    "about": "À propos"
+  },
+  "services": {
+    "airport": "Transferts Aéroport",
+    "grandPrix": "Transferts Grand Prix",
+    "tennis": "Masters de Tennis",
+    "corporate": "Événements d'Entreprise"
+  },
+  "contact": {
+    "phone": "+377 6 78 63 63 46",
+    "email": "info@monaco-express.com",
+    "address": "Monte Carlo, Monaco",
+    "bookNow": "Réserver",
+    "contactUs": "Contactez-nous",
+    "whatsapp": "WhatsApp",
+    "haveQuestion": "Une question ?",
+    "contactToday": "Contactez-nous aujourd'hui"
+  },
+  "common": {
+    "learnMore": "En savoir plus",
+    "exploreServices": "Découvrir nos services",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "emailUs": "Envoyez-nous un email",
+    "allRightsReserved": "Tous droits réservés",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation"
+  },
+  "home": {
+    "seo": {
+      "description": "Services de transfert en voiture de luxe à Monaco, Nice et sur la Côte d'Azur. Spécialisé dans les transferts aéroport, les transports Grand Prix et les événements d'entreprise.",
+      "keywords": "Transferts Monaco, transferts Côte d'Azur, service voiture de luxe, transferts aéroport, transferts Grand Prix, transport entreprise, transferts aéroport Nice, transferts Monte Carlo",
+      "category": "Services de Transport"
+    },
+    "hero": {
+      "title": "Transferts de Luxe sur la Côte d'Azur",
+      "subtitle": "Découvrez des transferts de luxe entre Monaco, l'Aéroport de Nice et les destinations les plus exclusives de la Côte d'Azur.",
+      "ourServices": "Nos Services",
+      "bookNow": "Réserver"
+    },
+    "features": {
+      "title": "L'Excellence à Votre Service",
+      "subtitle": "Découvrez l'excellence des transferts de luxe avec notre service premium",
+      "locations": {
+        "title": "Emplacements Stratégiques",
+        "description": "Transferts pratiques entre Monaco, l'Aéroport de Nice et toutes les destinations majeures de la Côte d'Azur.",
+        "details": "Notre flotte comprend les dernières berlines de luxe, toutes équipées d'équipements premium et de la climatisation. Découvrez le confort et le style à chaque voyage."
+      },
+      "service": {
+        "title": "Service Professionnel",
+        "description": "Chauffeurs experts à votre service",
+        "details": "Nos chauffeurs expérimentés sont formés pour fournir le plus haut niveau de service. Ils connaissent les meilleurs itinéraires, parlent plusieurs langues et assurent un voyage agréable et confortable."
+      },
+      "routes": {
+        "title": "Itinéraires Stratégiques",
+        "description": "Transferts efficaces sur la Côte d'Azur",
+        "details": "De Monaco à l'Aéroport de Nice, de Cannes à Monte Carlo, ou toute autre destination. Nos chauffeurs connaissent les meilleurs itinéraires pour assurer des arrivées ponctuelles, même aux heures de pointe ou lors d'événements spéciaux."
+      },
+      "availability": "DISPONIBILITÉ",
+      "luxuryFleet": "FLOTTE DE LUXE",
+      "languages": "LANGUES",
+      "experience": "ANS D'EXPÉRIENCE",
+      "destinations": "DESTINATIONS",
+      "onTime": "GARANTIE PONCTUALITÉ",
+      "events": {
+        "title": "Événements Spéciaux",
+        "description": "Services dédiés pour le Grand Prix de Monaco, le Rolex Monte-Carlo Masters et autres événements prestigieux."
+      },
+      "luxury": {
+        "title": "Expérience de Luxe",
+        "description": "Véhicules haut de gamme et chauffeurs professionnels pour un confort ultime."
+      },
+      "seo": {
+        "title": "Services de Transfert de Luxe à Monaco",
+        "description": "Découvrez les transferts premium avec Monaco Express. Chauffeurs professionnels, véhicules de luxe et service fiable sur toute la Côte d'Azur.",
+        "keywords": "Transfert Monaco, transfert aéroport Nice, transferts Côte d'Azur, transferts Grand Prix, service voiture de luxe Monaco"
+      }
+    },
+    "testimonials": {
+      "title": "Témoignages Clients",
+      "subtitle": "Découvrez les transferts de luxe à travers les yeux de nos clients"
+    },
+    "cta": {
+      "title": "Prêt à Voyager avec Style ?",
+      "subtitle": "Réservez votre transfert de luxe aujourd'hui"
+    }
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "subtitle": "En savoir plus sur notre service de transfert de luxe",
+    "questions": {
+      "yacht": {
+        "question": "Qu'est-ce qui est inclus dans votre service de transfert ?",
+        "answer": "Notre service de transfert de luxe comprend un chauffeur professionnel, un véhicule haut de gamme avec tous les équipements, eau gratuite, Wi-Fi et service porte-à-porte. Des services supplémentaires comme les sièges enfants, les arrêts multiples ou le temps d'attente peuvent être organisés sur demande."
+      },
+      "booking": {
+        "question": "Combien de temps à l'avance dois-je réserver mon transfert ?",
+        "answer": "Pour la haute saison (juillet-août) et les événements spéciaux comme le Grand Prix de Monaco, nous recommandons de réserver 1-2 semaines à l'avance. Pour les transferts réguliers, un préavis de 24-48 heures est généralement suffisant, bien qu'une réservation anticipée garantisse une meilleure disponibilité."
+      },
+      "destinations": {
+        "question": "Quelles sont les destinations populaires depuis Monaco ?",
+        "answer": "Les destinations populaires incluent l'Aéroport de Nice, Cannes, Saint-Tropez, les villes frontalières italiennes et tous les principaux hôtels et lieux de la Côte d'Azur. Nous pouvons organiser des transferts vers n'importe quelle destination de la région selon vos besoins."
+      },
+      "dietary": {
+        "question": "Pouvez-vous répondre à des besoins spéciaux ?",
+        "answer": "Absolument. Nous pouvons répondre à tous les besoins spéciaux, y compris les sièges enfants, les bagages supplémentaires, l'accessibilité en fauteuil roulant ou toute préférence spécifique. Il suffit de nous informer de vos besoins lors de la réservation."
+      },
+      "duration": {
+        "question": "Combien de temps durent généralement les transferts ?",
+        "answer": "Les temps de transfert varient selon la destination. Les transferts vers l'Aéroport de Nice prennent généralement 30-45 minutes, Cannes environ 1 heure et Saint-Tropez environ 2 heures. Nous planifions toujours les itinéraires pour minimiser le temps de trajet tout en assurant le confort."
+      },
+      "activities": {
+        "question": "Quels services supplémentaires proposez-vous ?",
+        "answer": "Outre les transferts standard, nous proposons des services pour les événements spéciaux, le transport d'entreprise, les services de mariage et des visites personnalisées de la Côte d'Azur. Nous pouvons également organiser des réservations sur plusieurs jours et des services VIP."
+      }
+    }
+  },
+  "steps": {
+    "title": "Nos Services de Transfert",
+    "subtitle": "Découvrez notre gamme complète de solutions de transfert de luxe",
+    "keyFeatures": "Caractéristiques Principales",
+    "benefits": "Avantages",
+    "bookNow": "Réserver Votre Transfert",
+    "airport": {
+      "title": "Transferts Aéroport",
+      "description": "Connexions aéroportuaires sans faille",
+      "details": "Service d'accueil professionnel à l'Aéroport Nice Côte d'Azur. Nos chauffeurs suivent votre vol et assurent des prises en charge ponctuelles, que vous arriviez ou partiez.",
+      "features": {
+        "tracking": "Suivi des vols en temps réel pour des prises en charge précises",
+        "meetGreet": "Service d'accueil avec panneau nominatif",
+        "luggage": "Assistance et prise en charge des bagages",
+        "availability": "Disponibilité 24/7 pour tous les vols",
+        "waiting": "Temps d'attente gratuit en cas de retard",
+        "communication": "Communication directe avec votre chauffeur"
+      },
+      "benefits": {
+        "noQueue": "Pas d'attente aux files de taxi",
+        "stressFree": "Expérience aéroportuaire sans stress",
+        "luggageHandling": "Prise en charge professionnelle des bagages",
+        "comfort": "Trajet confortable vers votre destination"
+      }
+    },
+    "prebooked": {
+      "title": "Transferts Pré-réservés",
+      "description": "Prises en charge programmées fiables",
+      "details": "Réservez votre berline de luxe à l'avance pour toute occasion. Parfait pour les réunions d'affaires, les événements spéciaux, ou simplement pour éviter d'attendre les taxis.",
+      "features": {
+        "booking": "Réservation anticipée avec confirmation instantanée",
+        "scheduling": "Options de programmation flexibles",
+        "routes": "Organisation d'itinéraires réguliers",
+        "corporate": "Gestion de comptes entreprise",
+        "discounts": "Remises sur réservations récurrentes",
+        "priority": "Service prioritaire pour les clients réguliers"
+      },
+      "benefits": {
+        "availability": "Disponibilité garantie",
+        "noStress": "Pas de stress de dernière minute",
+        "quality": "Qualité de service constante",
+        "timeSaving": "Gain de temps pour les professionnels"
+      }
+    },
+    "events": {
+      "title": "Événements Spéciaux",
+      "description": "Transport événementiel premium",
+      "details": "Service de transfert de luxe dédié pour le Grand Prix de Monaco, le Rolex Monte-Carlo Masters et autres événements prestigieux. Vivez une expérience de transport sans stress.",
+      "features": {
+        "planning": "Planification d'itinéraires spécifiques aux événements",
+        "vip": "Accès VIP et stationnement prioritaire",
+        "group": "Coordination des transferts de groupe",
+        "hours": "Horaires de service étendus",
+        "traffic": "Gestion du trafic les jours d'événement",
+        "packages": "Forfaits événements spéciaux"
+      },
+      "benefits": {
+        "stressFree": "Transport événementiel sans stress",
+        "knowledge": "Expertise locale",
+        "coordination": "Coordination de groupe",
+        "premium": "Service premium pendant les périodes de pointe"
+      }
+    },
+    "city": {
+      "title": "Transferts Urbains",
+      "description": "Voyages de luxe intra-urbains",
+      "details": "Transferts efficaces entre les points clés de Monaco. Du Casino au Port, ou entre les hôtels de luxe et les restaurants, voyagez avec style et confort.",
+      "features": {
+        "expertise": "Expertise locale et optimisation des itinéraires",
+        "response": "Temps de réponse rapides",
+        "stops": "Organisation d'arrêts multiples",
+        "shopping": "Assistance shopping",
+        "recommendations": "Recommandations d'hôtels et restaurants",
+        "waiting": "Temps d'attente flexibles"
+      },
+      "benefits": {
+        "efficient": "Déplacements locaux efficaces",
+        "noParking": "Pas de soucis de stationnement",
+        "shopping": "Assistance shopping pratique",
+        "knowledge": "Connaissance locale approfondie"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Témoignages Clients",
+    "subtitle": "Découvrez les transferts de luxe à travers les yeux de nos clients",
+    "james": {
+      "name": "James Wilson",
+      "role": "Cadre d'Entreprise",
+      "location": "Londres, Royaume-Uni",
+      "content": "Le service était exceptionnel. La Mercedes Classe S noire était impeccable, et le chauffeur était professionnel et ponctuel. Parfait pour mes réunions d'affaires à Monaco."
+    },
+    "sophie": {
+      "name": "Sophie Laurent",
+      "role": "Consultante en Voyages de Luxe",
+      "location": "Paris, France",
+      "content": "En tant que professionnelle organisant des expériences de voyage de luxe, je peux dire que Monaco Express établit la norme. Leur flotte de berlines noires et leur attention aux détails sont inégalées."
+    },
+    "michael": {
+      "name": "Michael Chen",
+      "role": "Investisseur International",
+      "location": "Singapour",
+      "content": "Le service de transfert le plus fiable et luxueux à Monaco. La BMW Série 7 noire était parfaite pour mes besoins, et le service était constamment excellent."
+    }
+  },
+  "quote": {
+    "title": "Parlez-nous de vos besoins de transfert",
+    "subtitle": "Service professionnel. Véhicules de luxe. Devis instantanés.",
+    "placeholder": "Décrivez vos besoins de transfert...",
+    "addPhotos": "Ajouter des photos",
+    "photoCount": "{{count}} photo{{count !== 1 ? 's' : ''}}",
+    "uploadAlt": "Téléchargement {{number}}",
+    "removePhoto": "Supprimer la photo",
+    "generating": "Génération du devis...",
+    "getQuote": "Obtenir un devis",
+    "error": {
+      "generic": "Une erreur s'est produite lors du traitement de votre demande",
+      "required": "Veuillez fournir les détails du transfert"
+    },
+    "hero": {
+      "title": "Réparation domiciliaire.",
+      "subtitle": "Réinventée.",
+      "description": "Découvrez l'avenir de l'amélioration de l'habitat. Devis instantanés. Réservation facile. Résultats exceptionnels.",
+      "quoteTitle": "Services de bricolage. Devis instantané",
+      "quoteSubtitle": "Des petites réparations aux grands projets. Votre estimation précise en quelques secondes.",
+      "quoteDescription": "Qu'il s'agisse d'une installation défectueuse, de réparations générales ou d'améliorations de l'habitat. Notre nouveau système d'IA combine plus de 15 ans de réparations réussies avec une technologie de pointe pour fournir des estimations précises en quelques secondes."
+    },
+    "booking": {
+      "title": "Réservez votre service",
+      "description": "Sélectionnez les services dont vous avez besoin et planifiez votre rendez-vous"
+    },
+    "notes": {
+      "title": "Notes importantes",
+      "minimumOrder": "Valeur minimale de commande de 250$ requise pour tous les services",
+      "drywallService": "Pour les services de réparation de cloisons sèches, veuillez utiliser notre outil de devis personnalisé sur az-handyman.ca/drywall"
+    },
+    "categories": {
+      "Everyday Handyman Services": "Services de bricolage quotidiens",
+      "Light Plumbing": "Plomberie légère",
+      "Minor Repairs": "Réparations mineures",
+      "Outdoor Tasks": "Tâches extérieures",
+      "Miscellaneous": "Divers"
+    },
+    "services": {
+      "Hanging shelves": {
+        "name": "Installation d'étagères",
+        "note": "par étagère"
+      },
+      "Picture and mirror hanging": {
+        "name": "Accrochage de tableaux et miroirs"
+      },
+      "Caulking a bathtub or shower": {
+        "name": "Calfeutrage de baignoire ou douche"
+      },
+      "Mounting a TV": {
+        "name": "Installation de TV",
+        "note": "selon la complexité"
+      },
+      "Furniture assembly": {
+        "name": "Montage de meubles",
+        "note": "selon la taille/complexité"
+      },
+      "Replacing light fixtures": {
+        "name": "Remplacement de luminaires",
+        "note": "par luminaire"
+      },
+      "Installing curtain rods or blinds": {
+        "name": "Installation de tringles à rideaux ou stores"
+      },
+      "Faucet replacement": {
+        "name": "Remplacement de robinet"
+      },
+      "Toilet handle or seat replacement": {
+        "name": "Remplacement de poignée ou siège de toilette"
+      },
+      "Unclogging drains": {
+        "name": "Débouchage de canalisations"
+      },
+      "Showerhead replacement": {
+        "name": "Remplacement de pommeau de douche"
+      },
+      "Door adjustments": {
+        "name": "Ajustement de portes"
+      },
+      "Fixing cabinet hinges": {
+        "name": "Réparation de charnières d'armoire"
+      },
+      "Weatherstripping": {
+        "name": "Calfeutrage",
+        "note": "par porte/fenêtre"
+      },
+      "Gutter cleaning": {
+        "name": "Nettoyage de gouttières"
+      },
+      "Pressure washing": {
+        "name": "Nettoyage haute pression",
+        "note": "selon la surface"
+      },
+      "Fence and gate repairs": {
+        "name": "Réparation de clôtures et portails",
+        "note": "selon les dommages/longueur"
+      },
+      "Smart device setup": {
+        "name": "Configuration d'appareils intelligents",
+        "note": "ex: sonnettes vidéo, thermostats"
+      },
+      "Grout cleaning and repair": {
+        "name": "Nettoyage et réparation de joints"
+      },
+      "Baseboard and trim installation": {
+        "name": "Installation de plinthes et moulures"
+      }
+    },
+    "actions": {
+      "decrease": "Diminuer la quantité",
+      "increase": "Augmenter la quantité",
+      "continue": "Continuer vers la réservation"
+    },
+    "total": "Total estimé : {{min}}$ - {{max}}$",
+    "errors": {
+      "minimumOrder": "* Veuillez ajouter plus de services pour atteindre la valeur minimale de commande de 250$"
+    },
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "phone": "Téléphone",
+      "address": "Adresse",
+      "notes": "Notes supplémentaires"
+    }
+  },
+  "languageSwitcher": {
+    "selectLanguage": "Sélectionner la langue",
+    "switchTo": "Passer à {{language}}"
+  }
+} 

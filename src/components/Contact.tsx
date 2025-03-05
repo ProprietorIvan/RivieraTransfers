@@ -1,9 +1,11 @@
 import { ChevronRight, Mail, Phone, Copy, Check } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "next-i18next";
 
 const Contact = () => {
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const { t } = useTranslation("common");
 
   const copyToClipboard = async (text: string, isPhone: boolean) => {
     try {
@@ -24,14 +26,14 @@ const Contact = () => {
     <section className="px-4 sm:px-6 py-16 sm:py-24 md:py-32 bg-white">
       <div className="max-w-4xl mx-auto text-center">
         <h3 className="text-3xl sm:text-4xl font-semibold mb-4 sm:mb-8">
-          Have a question?
+          {t("contact.haveQuestion")}
         </h3>
         <p className="text-lg sm:text-xl text-gray-500 mb-8 sm:mb-12 max-w-2xl mx-auto px-4">
-          Contact us today.
+          {t("contact.contactToday")}
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 md:gap-8 text-base sm:text-lg px-4">
           <button
-            onClick={() => copyToClipboard("7786534862", true)}
+            onClick={() => copyToClipboard(t("contact.phone"), true)}
             className={`flex items-center justify-center px-6 sm:px-8 py-4 rounded-full transition-all duration-200 group ${
               copiedPhone
                 ? "bg-green-600 text-white scale-95"
@@ -43,14 +45,14 @@ const Contact = () => {
             ) : (
               <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             )}
-            <span>{copiedPhone ? "Copied!" : "+377 6 78 63 63 46"}</span>
+            <span>{copiedPhone ? t("common.copied") : t("contact.phone")}</span>
             {!copiedPhone && (
               <Copy className="w-4 h-4 sm:w-5 sm:h-5 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             )}
           </button>
 
           <button
-            onClick={() => copyToClipboard("info@azhandyman.ca", false)}
+            onClick={() => copyToClipboard(t("contact.email"), false)}
             className={`flex items-center justify-center px-6 sm:px-8 py-4 rounded-full transition-all duration-200 group ${
               copiedEmail
                 ? "bg-green-600 text-white scale-95"
@@ -63,10 +65,10 @@ const Contact = () => {
               <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             )}
             <span className="hidden sm:inline">
-              {copiedEmail ? "Copied!" : "info@azhandyman.ca"}
+              {copiedEmail ? t("common.copied") : t("contact.email")}
             </span>
             <span className="sm:hidden">
-              {copiedEmail ? "Copied!" : "Email Us"}
+              {copiedEmail ? t("common.copied") : t("common.emailUs")}
             </span>
             {!copiedEmail && (
               <Copy className="w-4 h-4 sm:w-5 sm:h-5 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />

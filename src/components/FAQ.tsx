@@ -1,32 +1,35 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import React from "react";
+import { ArrowRight } from "lucide-react";
+import { useTranslation } from "next-i18next";
 
 const FAQ = () => {
+  const { t } = useTranslation("common");
+
   const faqData = [
     {
-      question: "What is included in a luxury yacht charter?",
-      answer: "Our luxury yacht charters include a professional crew (captain, chef, stewards), all onboard amenities, water toys and equipment, gourmet meals and beverages, fuel for standard cruising, and berthing at your embarkation/disembarkation ports. Additional costs may include special requests, premium wines, harbor fees at other ports, and special activities."
+      question: t("faq.questions.yacht.question"),
+      answer: t("faq.questions.yacht.answer"),
     },
     {
-      question: "How far in advance should I book my charter?",
-      answer: "For peak season (July-August) and special events like the Monaco Grand Prix, we recommend booking 6-12 months in advance. For other periods, 3-6 months ahead is advisable to ensure the best yacht selection and allow time for proper trip planning."
+      question: t("faq.questions.booking.question"),
+      answer: t("faq.questions.booking.answer"),
     },
     {
-      question: "What are the popular destinations from Monaco?",
-      answer: "Popular destinations include the French Riviera (Saint-Tropez, Cannes, Antibes), Italian Riviera (Portofino, Cinque Terre), Corsica, Sardinia, and the Amalfi Coast. We can customize itineraries based on your preferences and desired experiences."
+      question: t("faq.questions.destinations.question"),
+      answer: t("faq.questions.destinations.answer"),
     },
     {
-      question: "Can you accommodate special dietary requirements?",
-      answer: "Absolutely. Our experienced chefs can accommodate all dietary requirements including vegetarian, vegan, gluten-free, kosher, or any specific allergies. We'll discuss your preferences during the planning phase to ensure a perfect culinary experience."
+      question: t("faq.questions.dietary.question"),
+      answer: t("faq.questions.dietary.answer"),
     },
     {
-      question: "What is the typical charter duration?",
-      answer: "Most charters run for 7 days, typically starting from Saturday to Saturday. However, we can arrange shorter 3-4 day trips or extended voyages depending on your wishes and yacht availability. Each charter is customized to your schedule."
+      question: t("faq.questions.duration.question"),
+      answer: t("faq.questions.duration.answer"),
     },
     {
-      question: "What activities are available during the charter?",
-      answer: "Our yachts come equipped with various water toys including jet skis, seabobs, paddleboards, and snorkeling gear. We can also arrange onshore activities like beach clubs, restaurant reservations, golf outings, spa treatments, and cultural excursions."
-    }
+      question: t("faq.questions.activities.question"),
+      answer: t("faq.questions.activities.answer"),
+    },
   ];
 
   return (
@@ -35,13 +38,11 @@ const FAQ = () => {
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/2">
             <h3 className="text-4xl font-serif lg:tracking-tight text-slate-900">
-              Frequently Asked Questions
+              {t("faq.title")}
             </h3>
-            <p className="text-lg mt-4 text-slate-600">
-              Learn more about our luxury charter experience
-            </p>
+            <p className="text-lg mt-4 text-slate-600">{t("faq.subtitle")}</p>
           </div>
-          
+
           <div className="w-full md:w-1/2 max-w-xl mx-auto">
             <div className="grid divide-y divide-slate-200">
               {faqData.map((faq, index) => (

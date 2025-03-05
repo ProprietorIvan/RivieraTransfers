@@ -10,91 +10,90 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "next-i18next";
 
 const StepsSection = () => {
+  const { t } = useTranslation("common");
+
   const useCases = [
     {
-      title: "Airport Transfers",
-      description: "Seamless airport connections",
-      details:
-        "Professional meet-and-greet service at Nice Côte d'Azur Airport. Our chauffeurs track your flight and ensure timely pickups, whether you're arriving or departing.",
+      title: t("steps.airport.title"),
+      description: t("steps.airport.description"),
+      details: t("steps.airport.details"),
       icon: Plane,
       features: [
-        "Real-time flight tracking for accurate pickups",
-        "Meet and greet service with name board",
-        "Luggage assistance and handling",
-        "24/7 availability for all flights",
-        "Complimentary waiting time for delays",
-        "Direct communication with your chauffeur",
+        t("steps.airport.features.tracking"),
+        t("steps.airport.features.meetGreet"),
+        t("steps.airport.features.luggage"),
+        t("steps.airport.features.availability"),
+        t("steps.airport.features.waiting"),
+        t("steps.airport.features.communication"),
       ],
       benefits: [
-        "No waiting in taxi queues",
-        "Stress-free airport experience",
-        "Professional luggage handling",
-        "Comfortable journey to your destination",
+        t("steps.airport.benefits.noQueue"),
+        t("steps.airport.benefits.stressFree"),
+        t("steps.airport.benefits.luggageHandling"),
+        t("steps.airport.benefits.comfort"),
       ],
     },
     {
-      title: "Pre-Booked Transfers",
-      description: "Reliable scheduled pickups",
-      details:
-        "Book your luxury sedan in advance for any occasion. Perfect for business meetings, special events, or when you simply want to avoid waiting for taxis.",
+      title: t("steps.prebooked.title"),
+      description: t("steps.prebooked.description"),
+      details: t("steps.prebooked.details"),
       icon: Calendar,
       features: [
-        "Advance booking with instant confirmation",
-        "Flexible scheduling options",
-        "Regular route arrangements",
-        "Corporate account management",
-        "Recurring booking discounts",
-        "Priority service for regular clients",
+        t("steps.prebooked.features.booking"),
+        t("steps.prebooked.features.scheduling"),
+        t("steps.prebooked.features.routes"),
+        t("steps.prebooked.features.corporate"),
+        t("steps.prebooked.features.discounts"),
+        t("steps.prebooked.features.priority"),
       ],
       benefits: [
-        "Guaranteed availability",
-        "No last-minute stress",
-        "Consistent service quality",
-        "Time-saving for busy professionals",
+        t("steps.prebooked.benefits.availability"),
+        t("steps.prebooked.benefits.noStress"),
+        t("steps.prebooked.benefits.quality"),
+        t("steps.prebooked.benefits.timeSaving"),
       ],
     },
     {
-      title: "Special Events",
-      description: "Premium event transportation",
-      details:
-        "Dedicated luxury transfer service for Monaco Grand Prix, Rolex Monte-Carlo Masters, and other prestigious events. Experience stress-free event transportation.",
+      title: t("steps.events.title"),
+      description: t("steps.events.description"),
+      details: t("steps.events.details"),
       icon: Star,
       features: [
-        "Event-specific route planning",
-        "VIP access and priority parking",
-        "Group transfer coordination",
-        "Extended service hours",
-        "Event day traffic management",
-        "Special event packages",
+        t("steps.events.features.planning"),
+        t("steps.events.features.vip"),
+        t("steps.events.features.group"),
+        t("steps.events.features.hours"),
+        t("steps.events.features.traffic"),
+        t("steps.events.features.packages"),
       ],
       benefits: [
-        "Stress-free event transportation",
-        "Expert local knowledge",
-        "Group coordination",
-        "Premium service during peak times",
+        t("steps.events.benefits.stressFree"),
+        t("steps.events.benefits.knowledge"),
+        t("steps.events.benefits.coordination"),
+        t("steps.events.benefits.premium"),
       ],
     },
     {
-      title: "City Transfers",
-      description: "Intra-city luxury travel",
-      details:
-        "Efficient transfers between Monaco's key locations. From the Casino to the Port, or between luxury hotels and restaurants, travel in style and comfort.",
+      title: t("steps.city.title"),
+      description: t("steps.city.description"),
+      details: t("steps.city.details"),
       icon: MapPin,
       features: [
-        "Local expertise and route optimization",
-        "Quick response times",
-        "Multiple stop arrangements",
-        "Shopping assistance",
-        "Hotel and restaurant recommendations",
-        "Flexible waiting times",
+        t("steps.city.features.expertise"),
+        t("steps.city.features.response"),
+        t("steps.city.features.stops"),
+        t("steps.city.features.shopping"),
+        t("steps.city.features.recommendations"),
+        t("steps.city.features.waiting"),
       ],
       benefits: [
-        "Efficient local travel",
-        "No parking hassles",
-        "Convenient shopping assistance",
-        "Local insider knowledge",
+        t("steps.city.benefits.efficient"),
+        t("steps.city.benefits.noParking"),
+        t("steps.city.benefits.shopping"),
+        t("steps.city.benefits.knowledge"),
       ],
     },
   ];
@@ -116,10 +115,10 @@ const StepsSection = () => {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-serif mb-6 text-black">
-            Our Transfer Services
+            {t("steps.title")}
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto">
-            Discover our comprehensive range of luxury transfer solutions
+            {t("steps.subtitle")}
           </p>
         </motion.div>
 
@@ -154,7 +153,7 @@ const StepsSection = () => {
                 <div>
                   <h4 className="text-black font-medium mb-3 flex items-center gap-2">
                     <Shield className="w-5 h-5" />
-                    Key Features
+                    {t("steps.keyFeatures")}
                   </h4>
                   <div className="grid grid-cols-2 gap-3">
                     {useCase.features.map((feature, idx) => (
@@ -172,7 +171,7 @@ const StepsSection = () => {
                 <div>
                   <h4 className="text-black font-medium mb-3 flex items-center gap-2">
                     <Star className="w-5 h-5" />
-                    Benefits
+                    {t("steps.benefits")}
                   </h4>
                   <div className="grid grid-cols-2 gap-3">
                     {useCase.benefits.map((benefit, idx) => (
@@ -200,7 +199,7 @@ const StepsSection = () => {
           className="mt-16 text-center"
         >
           <div className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white rounded-full hover:bg-gray-800 transition-colors group shadow-lg shadow-slate-200">
-            <span className="font-medium">Book Your Transfer</span>
+            <span className="font-medium">{t("steps.bookNow")}</span>
             <Car className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </div>
         </motion.div>

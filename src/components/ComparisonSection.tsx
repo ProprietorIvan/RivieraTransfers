@@ -4,43 +4,43 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Head from "next/head";
+import { useTranslation } from "next-i18next";
 
 const ComparisonSection = () => {
+  const { t } = useTranslation("common");
+
   const features = [
     {
-      title: "Premium Fleet",
-      description: "Luxury vehicles for every occasion",
-      details:
-        "Our fleet includes the latest luxury sedans, all equipped with premium amenities and climate control. Experience comfort and style in every journey.",
+      title: t("home.features.locations.title"),
+      description: t("home.features.locations.description"),
+      details: t("home.features.locations.details"),
       icon: Car,
       image: "/images/cars/5.avif",
       stats: [
-        { value: "24/7", label: "AVAILABILITY" },
-        { value: "100%", label: "LUXURY FLEET" },
+        { value: "24/7", label: t("home.features.availability") },
+        { value: "100%", label: t("home.features.luxuryFleet") },
       ],
     },
     {
-      title: "Professional Service",
-      description: "Expert chauffeurs at your service",
-      details:
-        "Our experienced chauffeurs are trained to provide the highest level of service. They know the best routes, speak multiple languages, and ensure your journey is smooth and comfortable.",
+      title: t("home.features.service.title"),
+      description: t("home.features.service.description"),
+      details: t("home.features.service.details"),
       icon: Shield,
       image: "/images/cars/1.jpg",
       stats: [
-        { value: "10+", label: "LANGUAGES" },
-        { value: "15+", label: "YEARS EXPERIENCE" },
+        { value: "10+", label: t("home.features.languages") },
+        { value: "15+", label: t("home.features.experience") },
       ],
     },
     {
-      title: "Strategic Routes",
-      description: "Efficient transfers across the Riviera",
-      details:
-        "From Monaco to Nice Airport, Cannes to Monte Carlo, or any destination in between. Our drivers know the best routes to ensure timely arrivals, even during peak hours or special events.",
+      title: t("home.features.routes.title"),
+      description: t("home.features.routes.description"),
+      details: t("home.features.routes.details"),
       icon: MapPin,
       image: "/images/cars/2.webp",
       stats: [
-        { value: "30+", label: "DESTINATIONS" },
-        { value: "100%", label: "ON-TIME GUARANTEE" },
+        { value: "30+", label: t("home.features.destinations") },
+        { value: "100%", label: t("home.features.onTime") },
       ],
     },
   ];
@@ -82,15 +82,9 @@ const ComparisonSection = () => {
   return (
     <>
       <Head>
-        <title>Luxury Car Transfer Services in Monaco | Monaco Express</title>
-        <meta
-          name="description"
-          content="Experience premium car transfers with Monaco Express. Professional chauffeurs, luxury vehicles, and reliable service across the French Riviera."
-        />
-        <meta
-          name="keywords"
-          content="Monaco car transfer, Nice airport transfer, French Riviera transfers, Grand Prix transfers, luxury car service Monaco"
-        />
+        <title>{t("home.features.seo.title")} | Monaco Express</title>
+        <meta name="description" content={t("home.features.seo.description")} />
+        <meta name="keywords" content={t("home.features.seo.keywords")} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -108,10 +102,10 @@ const ComparisonSection = () => {
             className="text-center mb-20"
           >
             <h2 className="text-4xl md:text-5xl font-serif mb-6 text-slate-900">
-              Experience Excellence
+              {t("home.features.title")}
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Discover the epitome of luxury transfers with our premium service
+              {t("home.features.subtitle")}
             </p>
           </motion.div>
 
@@ -168,7 +162,9 @@ const ComparisonSection = () => {
                       href="/contact"
                       className="inline-flex items-center gap-2 text-black hover:text-slate-700 transition-colors group font-medium"
                     >
-                      <span className="font-medium">Book Now</span>
+                      <span className="font-medium">
+                        {t("contact.bookNow")}
+                      </span>
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -206,7 +202,7 @@ const ComparisonSection = () => {
               href="/services"
               className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white rounded-full hover:bg-gray-800 transition-colors group shadow-lg shadow-slate-200"
             >
-              <span className="font-medium">View Our Services</span>
+              <span className="font-medium">{t("common.exploreServices")}</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>

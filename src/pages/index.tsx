@@ -16,9 +16,13 @@ import FAQ from "@/components/FAQ";
 import StepsSection from "@/components/StepsSection";
 import Navigation from "@/components/Navigation";
 import Testimonials from "@/components/Testimonials";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import type { GetStaticProps } from "next";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const router = useRouter();
+  const { t } = useTranslation("common");
 
   const handleNavigation = (path: string) => {
     router.push(path);
@@ -29,22 +33,21 @@ const Home = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Monaco Express",
-    description:
-      "Premium luxury car transfer services in Monaco, Nice, and the French Riviera. Specializing in airport transfers, Grand Prix transportation, and corporate events.",
+    description: t("home.seo.description"),
     url: "https://monaco-express.com",
     logo: "https://monaco-express.com/logo.png",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Monte Carlo",
+      streetAddress: t("contact.address"),
       addressLocality: "Monaco",
       addressCountry: "MC",
       postalCode: "98000",
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+377 6 78 63 63 46",
+      telephone: t("contact.phone"),
       contactType: "customer service",
-      email: "info@monaco-express.com",
+      email: t("contact.email"),
       areaServed: "FR,MC",
       availableLanguage: ["English", "French", "Italian"],
     },
@@ -109,27 +112,16 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>
-          Monaco Express - Premium Car Transfers in the French Riviera
-        </title>
-        <meta
-          name="description"
-          content="Experience luxury car transfers in Monaco and the French Riviera. Professional airport transfers, Grand Prix transportation, and corporate event services. Book your premium transfer today."
-        />
-        <meta
-          name="keywords"
-          content="Monaco transfers, French Riviera transfers, luxury car service, airport transfers, Grand Prix transfers, corporate transportation, Nice airport transfers, Monte Carlo transfers"
-        />
+        <title>{t("home.hero.title")} - Monaco Express</title>
+        <meta name="description" content={t("home.hero.subtitle")} />
+        <meta name="keywords" content={t("home.seo.keywords")} />
         <meta name="author" content="Monaco Express" />
         <meta name="robots" content="index, follow" />
         <meta
           property="og:title"
-          content="Monaco Express - Premium Car Transfers in the French Riviera"
+          content={`${t("home.hero.title")} - Monaco Express`}
         />
-        <meta
-          property="og:description"
-          content="Experience luxury car transfers in Monaco and the French Riviera. Professional airport transfers, Grand Prix transportation, and corporate event services."
-        />
+        <meta property="og:description" content={t("home.hero.subtitle")} />
         <meta
           property="og:image"
           content="https://monaco-express.com/images/og-image.jpg"
@@ -139,12 +131,9 @@ const Home = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Monaco Express - Premium Car Transfers"
+          content={`${t("home.hero.title")} - Monaco Express`}
         />
-        <meta
-          name="twitter:description"
-          content="Experience luxury car transfers in Monaco and the French Riviera. Professional airport transfers, Grand Prix transportation, and corporate event services."
-        />
+        <meta name="twitter:description" content={t("home.hero.subtitle")} />
         <meta
           name="twitter:image"
           content="https://monaco-express.com/images/twitter-image.jpg"
@@ -161,15 +150,15 @@ const Home = () => {
         {/* WhatsApp Business API meta tags */}
         <meta
           property="business:contact_data:street_address"
-          content="Monte Carlo, Monaco"
+          content={t("contact.address")}
         />
         <meta
           property="business:contact_data:email"
-          content="info@monaco-express.com"
+          content={t("contact.email")}
         />
         <meta
           property="business:contact_data:phone"
-          content="+377 6 78 63 63 46"
+          content={t("contact.phone")}
         />
         <meta
           property="business:contact_data:website"
@@ -177,11 +166,11 @@ const Home = () => {
         />
         <meta
           property="business:contact_data:category"
-          content="Transportation Services"
+          content={t("home.seo.category")}
         />
         <meta
           property="business:contact_data:description"
-          content="Premium luxury car transfer services in Monaco and the French Riviera. Specializing in airport transfers, Grand Prix transportation, and corporate events."
+          content={t("home.seo.description")}
         />
 
         {/* Structured data */}
@@ -204,7 +193,6 @@ const Home = () => {
             >
               <source src="/videos/background.mp4" type="video/mp4" />
             </video>
-            {/* Gradient overlay for better text visibility */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
           </div>
@@ -214,30 +202,29 @@ const Home = () => {
           <div className="relative h-full max-w-7xl mx-auto px-4 flex items-center justify-end">
             <div className="max-w-2xl text-white text-right sm:pr-6">
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif mb-4 sm:mb-6 drop-shadow-lg">
-                Premium Car Transfers in the French Riviera
+                {t("home.hero.title")}
               </h1>
               <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-white/90 drop-shadow">
-                Experience luxury transfers between Monaco, Nice Airport, and
-                the most exclusive destinations in the French Riviera.
+                {t("home.hero.subtitle")}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-end">
                 <button
                   onClick={() => handleNavigation("/services")}
                   className="group flex items-center justify-center gap-2 bg-black/90 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium hover:bg-gray-800 transition-colors backdrop-blur-sm"
-                  aria-label="Explore our transfer services"
+                  aria-label={t("home.hero.ourServices")}
                 >
                   <Car className="w-4 h-4" />
-                  <span>Our Services</span>
+                  <span>{t("home.hero.ourServices")}</span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <button
                   onClick={() => handleNavigation("/contact")}
                   className="group flex items-center justify-center gap-2 bg-transparent border-2 border-white/80 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium hover:bg-white/10 transition-colors backdrop-blur-sm"
-                  aria-label="Contact us about transfers"
+                  aria-label={t("home.hero.bookNow")}
                 >
                   <Mail className="w-4 h-4" />
-                  <span>Book Now</span>
+                  <span>{t("home.hero.bookNow")}</span>
                 </button>
               </div>
             </div>
@@ -245,7 +232,10 @@ const Home = () => {
         </section>
 
         {/* Features Section */}
-        <section className="py-16 sm:py-24 bg-white" aria-label="Key features">
+        <section
+          className="py-16 sm:py-24 bg-white"
+          aria-label={t("home.features.title")}
+        >
           <div className="max-w-7xl mx-auto px-4">
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12">
               <div className="text-center group">
@@ -253,11 +243,10 @@ const Home = () => {
                   <MapPin className="w-8 h-8 text-black" />
                 </div>
                 <h3 className="text-xl font-serif mb-2 text-black">
-                  Strategic Locations
+                  {t("home.features.locations.title")}
                 </h3>
                 <p className="text-slate-600">
-                  Convenient transfers between Monaco, Nice Airport, and all
-                  major Riviera destinations.
+                  {t("home.features.locations.description")}
                 </p>
               </div>
               <div className="text-center group">
@@ -265,11 +254,10 @@ const Home = () => {
                   <Calendar className="w-8 h-8 text-black" />
                 </div>
                 <h3 className="text-xl font-serif mb-2 text-black">
-                  Special Events
+                  {t("home.features.events.title")}
                 </h3>
                 <p className="text-slate-600">
-                  Dedicated services for Monaco Grand Prix, Rolex Monte-Carlo
-                  Masters, and other prestigious events.
+                  {t("home.features.events.description")}
                 </p>
               </div>
               <div className="text-center group sm:col-span-2 md:col-span-1">
@@ -277,11 +265,10 @@ const Home = () => {
                   <Star className="w-8 h-8 text-black" />
                 </div>
                 <h3 className="text-xl font-serif mb-2 text-black">
-                  Luxury Experience
+                  {t("home.features.luxury.title")}
                 </h3>
                 <p className="text-slate-600">
-                  Premium vehicles and professional chauffeurs for the ultimate
-                  comfort.
+                  {t("home.features.luxury.description")}
                 </p>
               </div>
             </div>
@@ -291,15 +278,19 @@ const Home = () => {
         {/* Additional Sections */}
         <ComparisonSection />
         <StepsSection />
-
-        {/* Testimonials Section */}
         <Testimonials />
-
-        {/* FAQ Section */}
         <FAQ />
       </div>
     </>
   );
+};
+
+export const getStaticProps = async ({ locale }: { locale: string }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
 };
 
 export default Home;

@@ -7,34 +7,37 @@ import {
   Phone,
 } from "lucide-react";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation("common");
+
   const footerLinks = [
     {
-      title: "Navigation",
+      title: t("navigation.home"),
       links: [
-        { text: "Home", url: "/" },
-        { text: "Services", url: "/services" },
-        { text: "Destinations", url: "/destinations" },
-        { text: "Events", url: "/events" },
-        { text: "Contact", url: "/contact" },
+        { text: t("navigation.home"), url: "/" },
+        { text: t("navigation.services"), url: "/services" },
+        { text: t("navigation.destinations"), url: "/destinations" },
+        { text: t("navigation.events"), url: "/events" },
+        { text: t("navigation.contact"), url: "/contact" },
       ],
     },
     {
-      title: "Services",
+      title: t("navigation.services"),
       links: [
-        { text: "Airport Transfers", url: "/services/airport" },
-        { text: "Grand Prix Transfers", url: "/services/grand-prix" },
-        { text: "Tennis Masters", url: "/services/tennis" },
-        { text: "Corporate Events", url: "/services/corporate" },
+        { text: t("services.airport"), url: "/services/airport" },
+        { text: t("services.grandPrix"), url: "/services/grand-prix" },
+        { text: t("services.tennis"), url: "/services/tennis" },
+        { text: t("services.corporate"), url: "/services/corporate" },
       ],
     },
     {
-      title: "Contact",
+      title: t("navigation.contact"),
       items: [
-        { icon: Phone, text: "+377 6 78 63 63 46" },
-        { icon: Mail, text: "info@monaco-express.com" },
-        { icon: MapPin, text: "Monte Carlo, Monaco" },
+        { icon: Phone, text: t("contact.phone") },
+        { icon: Mail, text: t("contact.email") },
+        { icon: MapPin, text: t("contact.address") },
       ],
     },
   ];
@@ -110,20 +113,21 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-slate-900/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-700 text-sm">
-              © {new Date().getFullYear()} Monaco Express. All rights reserved.
+              © {new Date().getFullYear()} Monaco Express.{" "}
+              {t("common.allRightsReserved")}
             </p>
             <div className="flex gap-8">
               <Link
                 href="/privacy"
                 className="text-sm text-slate-700 hover:text-slate-900 transition-colors"
               >
-                Privacy Policy
+                {t("common.privacyPolicy")}
               </Link>
               <Link
                 href="/terms"
                 className="text-sm text-slate-700 hover:text-slate-900 transition-colors"
               >
-                Terms of Service
+                {t("common.termsOfService")}
               </Link>
             </div>
           </div>

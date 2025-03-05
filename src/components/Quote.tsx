@@ -10,6 +10,7 @@ import { useCallback, useEffect, useState } from "react";
 import { AiService } from "@/ai/ai-service";
 import AskContactsForQuote from "./AskContactsForQuote";
 import fileToBase64 from "@/utils/fileToBase64";
+import { useTranslation } from "next-i18next";
 
 interface QuoteProps {
   examples: string[];
@@ -24,6 +25,7 @@ export type ContactForm = {
 };
 
 const Quote = ({ examples, context }: QuoteProps) => {
+  const { t } = useTranslation("common");
   const [isDragging, setIsDragging] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [quote, setQuote] = useState<string | null>(null);
@@ -151,12 +153,8 @@ const Quote = ({ examples, context }: QuoteProps) => {
     <>
       <div className="mx-auto text-center">
         <div className="mb-6">
-          <h3 className="text-xl font-medium mb-1">
-            Tell us about your project
-          </h3>
-          <p className="text-sm text-black/60">
-            Magical technology. Human expertise. Instant results.
-          </p>
+          <h3 className="text-xl font-medium mb-1">{t("quote.title")}</h3>
+          <p className="text-sm text-black/60">{t("quote.subtitle")}</p>
         </div>
       </div>
       <Card

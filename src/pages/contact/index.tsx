@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import CalendarComponent from "@/components/Calendar";
 import { format } from "date-fns";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import type { GetStaticProps } from "next";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -419,6 +421,14 @@ Notes: ${formData.notes}`;
       </section>
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? "en", ["common"])),
+    },
+  };
 };
 
 export default ContactPage;
